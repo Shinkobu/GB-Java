@@ -1,15 +1,23 @@
+
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
+import java.util.function.DoubleBinaryOperator;
+
+
+
 
 class Sem1 {
     public static void main(String[] args) {
 //        Tasks tasks = new Tasks();
 //        Tasks.Task1();
-        Tasks.Task2();
+//        Tasks.Task2();
+        Tasks.generate(1, 7, 1, 2, "");
     }
 }
 
 class Tasks {
-
+    //    public static double powerNumbers(double a, double b); // принимает и может возвращать значения через return
     public static void Task1() {
 
         //   Реализовать функцию возведения числа а в степень b. a, b ? Z. Сводя количество выполняемых действий к минимуму.
@@ -33,6 +41,7 @@ class Tasks {
         int b = iScanner.nextInt();
         System.out.printf("Рассчитываю выражение %d в степени %d \n", a, b);
 
+
         // Определяем тип операции
         int r = 1;
         float rr = 1;
@@ -42,6 +51,7 @@ class Tasks {
                 r *= a;
             }
             System.out.printf("Результат: %d", r);
+            writeToFile(r);
         }
 
         if (b < 0) {
@@ -50,11 +60,14 @@ class Tasks {
             }
             rr = 1 / rr;
             System.out.printf("Результат: %f", rr);
+            writeToFile(rr);
         }
         if (b == 0) {
             if ((b == 0) && (a == 0)) {
                 System.out.printf("не определено");
+
             } else System.out.printf("Ответ: 1");
+            writeToFile(1);
         }
     }
 
@@ -80,27 +93,63 @@ class Tasks {
         int k2 = 0;
         String StringK12 = "";
 
+        if (a > b) {
+            System.out.printf("Решение невозможно");
 
-        while ((a * c) <= b) {
-            a *= c;
-            k1++;
-            StringK12 += "k1, ";
-//            System.out.println(k1);
-//            System.out.println(a);
-//            System.out.print("\n");
+        } else {
+
+            while ((a * c) <= b) {
+                a *= c;
+                k1++;
+                StringK12 += "k1, ";
+                //            System.out.println(k1);
+                //            System.out.println(a);
+                //            System.out.print("\n");
+            }
+            while ((a + d) <= b) {
+                a += d;
+                k2++;
+                StringK12 += "k2, ";
+                //            System.out.println(k2);
+                //            System.out.println(d);
+                //            System.out.print("\n");
+            }
+            System.out.printf("k1 = %d \n", k1);
+            System.out.print(StringK12);
+            //        System.out.println(k1);
+            //        System.out.println(k2);
         }
-        while ((a + d) <= b) {
-            a += d;
-            k2++;
-            StringK12 += "k2, ";
-//            System.out.println(k2);
-//            System.out.println(d);
-//            System.out.print("\n");
+    }
+
+    public static void writeToFile(double res) {
+        try (FileWriter fw = new FileWriter("output.txt", false)) {
+            fw.write((Double.toString(res)));
+            fw.append('\n');
+//            fw.append(res);
+            fw.flush();
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
         }
-        System.out.printf("k1 = %d \n", k1);
-        System.out.print(StringK12);
-//        System.out.println(k1);
-//        System.out.println(k2);
+    }
+
+    public static void Task2_1(String[] args) {
+        ;
+    }
+
+    public static void generate(int source, int target, int c, int d, String path) {
+        if (source > target){
+//            System.out.println(path);
+            return;
+        }
+        if (source == target) {
+            System.out.println(path);
+            return;
+        }
+
+        generate(source + c, target, c, d, path + " k1");
+        generate(source * d, target, c, d, path + " k2");
+
+
     }
 }
 
