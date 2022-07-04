@@ -256,5 +256,6 @@ public class Homework2 {
         }
         System.out.println("\nРешение не найдено");
     }
+
 }
 
