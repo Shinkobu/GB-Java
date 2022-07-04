@@ -25,6 +25,7 @@ public class Homework2 {
 //        например 2? + ?5 = 69. Требуется восстановить выражение до верного равенства.
 //        Предложить хотя бы одно решение или сообщить, что его нет.
 
+        // исходим из того, что в каждом числе может быть только замена только одной цифры на "?"
         Task3();
 
 
@@ -172,32 +173,88 @@ public class Homework2 {
         Scanner MyScan = new Scanner(System.in);
         System.out.println("Решаем уравнение q + w = e. Введите число q = ");
         String q = MyScan.nextLine();
-        System.out.printf("q = %s\n", q);
-        // System.out.println("Решаем уравнение q + w = e. Введите число w = ");
-        // String w = MyScan.nextLine();
-        // System.out.printf("w = %s", w);
-        // System.out.println("Решаем уравнение q + w = e. Введите число e = ");
-        // int e = MyScan.nextInt();
-        // System.out.printf("e = %d", e);
-        char[] chars = q.toCharArray();
-        int newQ = 0;
-        for (int i = chars.length-1; i>=0 ; i--){
-            int ind = chars.length-1-i;
-            System.out.println("chars[i] and ind " + chars[i] + " " + ind);
-            if (Character.isDigit(chars[i])) {
-                newQ += (chars[i]-'0')*(Math.pow(10,ind));
+//        System.out.printf("q = %s\n", q);
+        System.out.println("Введите число w = ");
+        String w = MyScan.nextLine();
+//        System.out.printf("w = %s", w);
+        System.out.println("Введите число e = ");
+        int e = MyScan.nextInt();
+//        System.out.printf("e = %d", e);
 
-                System.out.println("newQ = " + newQ);
+        int[] qArray = questionToDigit(q);
+//        System.out.println("Число q и индекс знака вопроса" + Arrays.toString(qArray));
+        int[] wArray = questionToDigit(w);
+//        System.out.println("Число w и индекс знака вопроса" + Arrays.toString(wArray));
 
-            }else if (chars[i] == '?') {
-                int targetIndex = ind;
-                System.out.println("oops!");
-            }// добавить условие одного ? в каждом числе, выдать сообщение об ошибке. Добавить проверку на другие символы
-
-
-        }
+        equationSolution(qArray,wArray,e);
 
     }
 
+    public static int[] questionToDigit (String str) {
+
+//      преобразуем строку в массив для анализа
+        char[] chars = str.toCharArray();
+        int newDigit = 0;
+
+        boolean questionMarkSwitch = false; // признак, что встретился знак вопроса
+        int targetIndex = 0; // индекс со знаком ?
+
+        // проходим по числу от меньших разрядов к большим
+
+
+        for (int i = chars.length - 1; i >= 0; i--) {
+            int ind = chars.length - 1 - i;
+//            System.out.println("chars[i] and ind " + chars[i] + " " + ind);
+            // преобразуем цифры в число
+
+            if (Character.isDigit(chars[i])) {
+                newDigit += (chars[i] - '0') * (Math.pow(10, ind));
+//                System.out.println("newDigit = " + newDigit);
+
+            } else if (chars[i] == '?' && questionMarkSwitch == false) {
+                targetIndex = ind;
+//                System.out.println("targetIndex = " + targetIndex);
+                questionMarkSwitch = true;
+
+            } else {
+                System.out.println("Недопустимое значение: " + str + "\nПопробуйте снова");
+                break;
+            }
+        }
+
+        if (questionMarkSwitch == false){
+            targetIndex = -1;
+        }
+
+        int [] outputArray = new int[]{newDigit, targetIndex};
+        return outputArray;
+
+    }
+
+    public static void equationSolution(int[] qArray, int[] wArray, int e) {
+        int q = qArray[0];
+        int qQuestionIndex = qArray[1];
+        int qNoQMark = 1;
+        if (qQuestionIndex == -1) qNoQMark = 0; // если нет знака вопроса в числе
+        int w = wArray[0];
+        int wQuestionIndex = wArray[1];
+        int wNoQMark = 1;
+        if (wQuestionIndex == -1) wNoQMark = 0;  // если нет знака вопроса в числе
+
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                double qIter = q + ((Math.pow(10, qQuestionIndex))*i*qNoQMark);
+                double wIter = w + ((Math.pow(10, wQuestionIndex))*j*wNoQMark);
+
+
+                if ( (qIter + wIter) == e){
+                    System.out.printf("\nРешение найдено: " + (int)qIter + " + " + (int)wIter + " = " + e );
+                    return;
+                }
+                
+            }
+        }
+        System.out.println("\nРешение не найдено");
+    }
 }
 
