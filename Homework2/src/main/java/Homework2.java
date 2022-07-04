@@ -17,7 +17,16 @@ public class Homework2 {
 //        1 3
 //        1 3 6
 
-        Task2();
+//        Task2();
+
+
+//        *+Задано уравнение вида q + w = e, q, w, e >= 0.
+//        Некоторые цифры могут быть заменены знаком вопроса,
+//        например 2? + ?5 = 69. Требуется восстановить выражение до верного равенства.
+//        Предложить хотя бы одно решение или сообщить, что его нет.
+
+        Task3();
+
 
     }
 
@@ -106,11 +115,11 @@ public class Homework2 {
     public static void Task2() {
         // n - количество элементов массива
         Scanner inputScanner = new Scanner(System.in);
-        System.out.printf("Введите n: ");
+        System.out.print("Введите n: ");
 
         //    Проверка на соответствие получаемого типа
         while (inputScanner.hasNextInt()==false){
-            System.out.printf("Ошибка ввода. Требуется ввести целое число: ");
+            System.out.print("Ошибка ввода. Требуется ввести целое число: ");
             inputScanner.next();
         }
 
@@ -144,7 +153,7 @@ public class Homework2 {
     }
 
     // добавляет элемент к массиву
-    public static int[] addArrayElement(int oldArray[],int newElement, int index) {
+    public static int[] addArrayElement(int[] oldArray, int newElement, int index) {
 
         int newArray[] = new int[index+1];
         if (index!=0) {
@@ -158,6 +167,37 @@ public class Homework2 {
 
     }
 
+    public static void Task3() {
+
+        Scanner MyScan = new Scanner(System.in);
+        System.out.println("Решаем уравнение q + w = e. Введите число q = ");
+        String q = MyScan.nextLine();
+        System.out.printf("q = %s\n", q);
+        // System.out.println("Решаем уравнение q + w = e. Введите число w = ");
+        // String w = MyScan.nextLine();
+        // System.out.printf("w = %s", w);
+        // System.out.println("Решаем уравнение q + w = e. Введите число e = ");
+        // int e = MyScan.nextInt();
+        // System.out.printf("e = %d", e);
+        char[] chars = q.toCharArray();
+        int newQ = 0;
+        for (int i = chars.length-1; i>=0 ; i--){
+            int ind = chars.length-1-i;
+            System.out.println("chars[i] and ind " + chars[i] + " " + ind);
+            if (Character.isDigit(chars[i])) {
+                newQ += (chars[i]-'0')*(Math.pow(10,ind));
+
+                System.out.println("newQ = " + newQ);
+
+            }else if (chars[i] == '?') {
+                int targetIndex = ind;
+                System.out.println("oops!");
+            }// добавить условие одного ? в каждом числе, выдать сообщение об ошибке. Добавить проверку на другие символы
+
+
+        }
+
+    }
 
 }
 
