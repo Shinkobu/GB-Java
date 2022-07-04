@@ -104,13 +104,7 @@ public class Homework2 {
     }
 
     public static void Task2() {
-        int[] myArray = new int[]{1,2,3};
-        System.out.println(Arrays.toString(myArray));
-        int[] tempArray = new int[myArray.length+1];
-        System.out.println(Arrays.toString(tempArray));
-
-
-
+        // n - количество элементов массива
         Scanner inputScanner = new Scanner(System.in);
         System.out.printf("Введите n: ");
 
@@ -121,39 +115,48 @@ public class Homework2 {
         }
 
         int n = inputScanner.nextInt();
+//        System.out.println(n);
 
+//      создаём служебный массив
+        int[] tempArray = new int[0];
 
+        for (int i = 0; i < n; i++) {
+//          создаём новый элемент алгоритмом треугольного числа
+            int newElement = triangle(i+1);
+//          добавляем новый элемент в новый массив
+            int[] newArray = addArrayElement(tempArray, newElement, i);
 
-        System.out.println(n);
-
-
-        // определяем n - номер треугольного числа
-        // выводим массив из 1 числа, потом из 2, потом из 3....до n
-        for (int i = 1; i < n; i++) {
+            System.out.println("Сгенерирован массив: ");
+            System.out.println(Arrays.toString(newArray));
+            tempArray = newArray;
 
         }
-        myArray = new int[]{1,2,3,4,5};
-
-        System.out.println("Сгенерирован массив: ");
-        System.out.println(Arrays.toString(myArray));
-
-//        for (int i = 0; i < myArray.length-1; i++) {
-//        tempArray[i] = myArray[i];
-//
+        inputScanner.close();
        }
 
     public static int triangle(int n) {
-//      Возвращает массив n-ого треугольного числа.
+//      Возвращает n-ое треугольного числа.
 
-
-//        Вычисляем результат
         int t = (int)(1d/2*n*(n+1));
 
-
-        System.out.printf("Результат %d", t);
+//        System.out.printf("Результат %d \n", t);
         return t;
     }
 
+    // добавляет элемент к массиву
+    public static int[] addArrayElement(int oldArray[],int newElement, int index) {
+
+        int newArray[] = new int[index+1];
+        if (index!=0) {
+            for (int i = 0; i < index; i++) {
+                newArray[i] = oldArray[i];
+
+            }
+        }
+        newArray[index] = newElement;
+        return newArray;
+
+    }
 
 
 }
