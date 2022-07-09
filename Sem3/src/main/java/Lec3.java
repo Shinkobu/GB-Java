@@ -1,4 +1,6 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class Lec3 {
     public static void main(String[] args) {
@@ -14,48 +16,42 @@ public class Lec3 {
     }
 
     public static void Task1() {
-        String[] myArray = new String[] {"провод", "когорта", "медведь", "лютик", "лютик", "когорта", "виноград", "медведь", "испуг", "провод"};
+        String[] myArray = new String[] {"провод", "когорта", "медведь", "медведь", "лютик", "когорта", "виноград", "медведь", "испуг", "провод"};
 //        System.out.println(Arrays.toString(myArray));
+
         ArrayList<String> wordList = new ArrayList<>(List.of(myArray));
         ArrayList<String> newWordList = new ArrayList<>();
 
 //        List<String> wordList = List.of("провод", "когорта", "медведь", "лютик", "лютик", "когорта", "виноград", "медведь", "испуг", "провод");
 
-        System.out.println(wordList);
+        System.out.println("Исходный список: \n"+ wordList + "\n");
 
-//        wordList.remove(1);
+//      Проход по элементам arraylist
+        for (int i = 0; i < wordList.size(); i++) {
+            String currentElement = wordList.get(i);
+//            System.out.println(currentElement);
+            int j = 0;
 
-//        for (String i : wordList) {
-//            System.out.println(i);
-//            if (i == "когорта") wordList.remove(i);
-//
-//        }
-//        System.out.println(wordList);
-//
+            Iterator<String> wordIter = wordList.iterator(); //создаем итератор
+            while (wordIter.hasNext()){ //до тех пор, пока в списке есть элементы
+                String currentIter = wordIter.next();
+//                System.out.println(currentIter); //получаем следующий элемент и выводим его в консоль
 
-//        HashSet<String> mySet = new HashSet<>();
-//        mySet.addAll(wordList);
-//        System.out.println(mySet);
+                if (currentIter == currentElement) j++;
 
+                if (currentIter == currentElement && j>1) wordIter.remove();
+                }
 
-        Iterator<String> wordIter = wordList.iterator(); //создаем итератор
+            newWordList.add(String.valueOf(j));
+        }
+        System.out.println("Список без повторов: \n" + wordList + "\n");
+//        System.out.println(newWordList);
 
-        while (wordIter.hasNext()){ //до тех пор, пока в списке есть элементы
-            String currentIter = wordIter.next();
-            System.out.println(currentIter); //получаем следующий элемент и выводим его в консоль
+        System.out.println("Сколько раз встречалось слово в списке: \n");
+        for (int i = 0; i < wordList.size(); i++) {
 
-            if (currentIter == "-1") {
-                newWordList.add(currentIter);
-                wordIter.remove();
-            }else {
-                newWordList.add(currentIter);
-            }
-
+            System.out.println(wordList.get(i) + " - " + newWordList.get(i) + " раз");
 
         }
-        System.out.println(wordList);
-        System.out.println(newWordList);
-
-
     }
 }
