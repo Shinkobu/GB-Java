@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e4b329f8-885f-4ef6-8d09-2754b72deb87" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Homework1" beforeDir="false" afterPath="$PROJECT_DIR$/Homework1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Homework1/src/main/java/Homework.java" beforeDir="false" afterPath="$PROJECT_DIR$/Homework1/src/main/java/Homework.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Homework1/target/classes/Homework.class" beforeDir="false" afterPath="$PROJECT_DIR$/Homework1/target/classes/Homework.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sem3/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Sem3/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Sem3/src/main/java/Lec3.java" beforeDir="false" afterPath="$PROJECT_DIR$/Sem3/src/main/java/Lec3.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Sem3/target/classes/Lec3.class" beforeDir="false" afterPath="$PROJECT_DIR$/Sem3/target/classes/Lec3.class" afterDir="false" />
     </list>

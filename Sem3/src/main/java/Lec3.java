@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class Lec3 {
     public static void main(String[] args) {
@@ -10,9 +8,8 @@ public class Lec3 {
 //        3) ¬ывести список без повторов
 //        4) ¬ывести список с указанием числа повторов каждого слова.
 
-        Task1();
-
-
+//        Task1();
+        Task1_fromSeminar();
     }
 
     public static void Task1() {
@@ -53,5 +50,43 @@ public class Lec3 {
             System.out.println(wordList.get(i) + " - " + newWordList.get(i) + " раз");
 
         }
+    }
+
+    public static int count(List <String> start, String element) {
+        int counter= 0;
+
+        for (String string : start) {
+            if (element.equals(string)) counter++;
+        }
+
+        return counter;
+
+    }
+
+    public static Map<String,Integer> transformer(List <String> start) {
+        Map<String,Integer> result = new HashMap<>(); // hashmap - это список с уникальными значени€ми ключей (без повторов)
+        for (String string : start){
+            result.put(string, Collections.frequency(start,string)); // или можно сослатьс€ на написанный метод count
+        }
+        return result;
+    }
+
+    public static void Task1_fromSeminar() {
+
+        String[] myArray = new String[] {"провод", "когорта", "медведь", "медведь", "лютик", "когорта", "виноград", "медведь", "испуг", "провод"};
+//        ArrayList<String> wordList = new ArrayList<>(List.of(myArray));
+
+        List<String> wordList = Arrays.asList("провод", "когорта", "медведь", "медведь", "лютик", "когорта", "виноград", "медведь", "испуг", "провод");
+
+
+        System.out.println("—колько раз встречалось слово в списке: \n");
+
+        // перебор мэпа с помощью entrySet
+        for (Map.Entry<String, Integer> buf : transformer(wordList).entrySet()) { // дл€ каждой пары ключ-значение в мэпе
+            System.out.println(buf.getKey() +" - " + buf.getValue());
+        }
+//        System.out.println(transformer(wordList));
+
+
     }
 }
