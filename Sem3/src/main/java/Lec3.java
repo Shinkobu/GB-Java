@@ -9,7 +9,18 @@ public class Lec3 {
 //        4) Вывести список с указанием числа повторов каждого слова.
 
 //        Task1();
-        Task1_fromSeminar();
+//        Task1_fromSeminar();
+
+//        Написать программу перебора n комбинаций из цифр от 0 - 9 (n длина массива)
+//        те
+//        0 0 0
+//        0 0 1
+//        0 0 2
+//        - - -
+//        9 9 9
+//        n - длина одной строки
+
+        Task2();
     }
 
     public static void Task1() {
@@ -89,4 +100,30 @@ public class Lec3 {
 
 
     }
-}
+
+    public static void Task2() {
+//        задаём n, на выходе получаем вывод в консоль всех вариантов сочетания цифр в виде массива
+        int n = 3;
+        int[] myArray = new int[n];
+        recDigit(n,myArray);
+
+    }
+
+    public static void recDigit (int n, int[] myArray) {
+
+        if (n==0) {
+            System.out.println(Arrays.toString(myArray));
+            return;
+        }
+
+        for (int i = 0; i <= 9; i++) {
+            myArray[myArray.length - n] = i;
+            recDigit(n - 1, myArray);
+        }
+
+        }
+
+    }
+
+
+
