@@ -8,25 +8,25 @@ import java.util.Scanner;
 
 public class Task3 {
 
-    private static ArrayList<int[]> digitsList = new ArrayList<>(); // РґР»СЏ  Task3Ver2();
+    private static ArrayList<int[]> digitsList = new ArrayList<>(); // для  Task3Ver2();
 
     public static void main(String[] args) {
 
-//        *+Р—Р°РґР°РЅРѕ СѓСЂР°РІРЅРµРЅРёРµ РІРёРґР° q + w = e, q, w, e >= 0.
-//        РќРµРєРѕС‚РѕСЂС‹Рµ С†РёС„СЂС‹ РјРѕРіСѓС‚ Р±С‹С‚СЊ Р·Р°РјРµРЅРµРЅС‹ Р·РЅР°РєРѕРј РІРѕРїСЂРѕСЃР°,
-//        РЅР°РїСЂРёРјРµСЂ 2? + ?5 = 69. РўСЂРµР±СѓРµС‚СЃСЏ РІРѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ РІС‹СЂР°Р¶РµРЅРёРµ РґРѕ РІРµСЂРЅРѕРіРѕ СЂР°РІРµРЅСЃС‚РІР°.
-//        РџСЂРµРґР»РѕР¶РёС‚СЊ С…РѕС‚СЏ Р±С‹ РѕРґРЅРѕ СЂРµС€РµРЅРёРµ РёР»Рё СЃРѕРѕР±С‰РёС‚СЊ, С‡С‚Рѕ РµРіРѕ РЅРµС‚.
+//        *+Задано уравнение вида q + w = e, q, w, e >= 0.
+//        Некоторые цифры могут быть заменены знаком вопроса,
+//        например 2? + ?5 = 69. Требуется восстановить выражение до верного равенства.
+//        Предложить хотя бы одно решение или сообщить, что его нет.
 
-        // РёСЃС…РѕРґРёРј РёР· С‚РѕРіРѕ, С‡С‚Рѕ РІ РєР°Р¶РґРѕРј С‡РёСЃР»Рµ РјРѕР¶РµС‚ Р±С‹С‚СЊ С‚РѕР»СЊРєРѕ Р·Р°РјРµРЅР° С‚РѕР»СЊРєРѕ РѕРґРЅРѕР№ С†РёС„СЂС‹ РЅР° "?"
+        // исходим из того, что в каждом числе может быть только замена только одной цифры на "?"
 //        Task3();
 
-        // Р’РµСЂСЃРёСЏ 2. РёСЃС…РѕРґРёРј РёР· С‚РѕРіРѕ, С‡С‚Рѕ Р·РЅР°РєРѕРІ РІРѕРїСЂРѕСЃР° РјРѕР¶РµС‚ Р±С‹С‚СЊ РЅРµСЃРєРѕР»СЊРєРѕ РІ РєР°Р¶РґРѕРј С‡РёСЃР»Рµ
+        // Версия 2. исходим из того, что знаков вопроса может быть несколько в каждом числе
         Task3Ver2();
         /*
-        1) Р’РІРѕРґРёРј С‡РёСЃР»Р° СЃ ?
-        2) РќР°С‡РёРЅР°РµРј РїРµСЂРµР±РѕСЂ РІСЃРµС… Р·РЅР°С‡РµРЅРёР№ (СЃРїРёСЃРѕРє СЃРїРёСЃРєРѕРІ?)
-        3) РћРіСЂР°РЅРёС‡РµРЅРёРµ - РїСЂРѕРІРµСЂРєР° РЅР° С†РёС„СЂС‹ СѓРєР°Р·Р°РЅРЅС‹Рµ РІ С‡РёСЃР»Рµ (СЃРґРµР»Р°С‚СЊ СЂРµРєСѓСЂСЃРёСЋ РёР»Рё С†РёРєР»)
-        Р•СЃР»Рё РїСЂРё РїРµСЂРµР±РѕСЂРµ С†РёС„СЂС‹ СЃРѕРІРїР°РґР°СЋС‚ СЃ РІРІРµРґС‘РЅРЅС‹РјРё РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј, С‚Рѕ С‡РёСЃР»Рѕ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РґР»СЏ РїСЂРѕРІРµСЂРєРё СЂР°РІРµРЅСЃС‚РІР°
+        1) Вводим числа с ?
+        2) Начинаем перебор всех значений (список списков?)
+        3) Ограничение - проверка на цифры указанные в числе (сделать рекурсию или цикл)
+        Если при переборе цифры совпадают с введёнными пользователем, то число используется для проверки равенства
 
 
         * */
@@ -37,20 +37,20 @@ public class Task3 {
     public static void Task3() {
 
         Scanner MyScan = new Scanner(System.in);
-        System.out.println("Р РµС€Р°РµРј СѓСЂР°РІРЅРµРЅРёРµ q + w = e. Р’РІРµРґРёС‚Рµ С‡РёСЃР»Рѕ q = ");
+        System.out.println("Решаем уравнение q + w = e. Введите число q = ");
         String q = MyScan.nextLine();
 //        System.out.printf("q = %s\n", q);
-        System.out.println("Р’РІРµРґРёС‚Рµ С‡РёСЃР»Рѕ w = ");
+        System.out.println("Введите число w = ");
         String w = MyScan.nextLine();
 //        System.out.printf("w = %s", w);
-        System.out.println("Р’РІРµРґРёС‚Рµ С‡РёСЃР»Рѕ e = ");
+        System.out.println("Введите число e = ");
         int e = MyScan.nextInt();
 //        System.out.printf("e = %d", e);
 
         int[] qArray = questionToDigit(q);
-//        System.out.println("Р§РёСЃР»Рѕ q Рё РёРЅРґРµРєСЃ Р·РЅР°РєР° РІРѕРїСЂРѕСЃР°" + Arrays.toString(qArray));
+//        System.out.println("Число q и индекс знака вопроса" + Arrays.toString(qArray));
         int[] wArray = questionToDigit(w);
-//        System.out.println("Р§РёСЃР»Рѕ w Рё РёРЅРґРµРєСЃ Р·РЅР°РєР° РІРѕРїСЂРѕСЃР°" + Arrays.toString(wArray));
+//        System.out.println("Число w и индекс знака вопроса" + Arrays.toString(wArray));
 
         equationSolution(qArray,wArray,e);
 
@@ -58,20 +58,20 @@ public class Task3 {
 
     public static int[] questionToDigit (String str) {
 
-//      РїСЂРµРѕР±СЂР°Р·СѓРµРј СЃС‚СЂРѕРєСѓ РІ РјР°СЃСЃРёРІ РґР»СЏ Р°РЅР°Р»РёР·Р°
+//      преобразуем строку в массив для анализа
         char[] chars = str.toCharArray();
         int newDigit = 0;
 
-        boolean questionMarkSwitch = false; // РїСЂРёР·РЅР°Рє, С‡С‚Рѕ РІСЃС‚СЂРµС‚РёР»СЃСЏ Р·РЅР°Рє РІРѕРїСЂРѕСЃР°
-        int targetIndex = 0; // РёРЅРґРµРєСЃ СЃРѕ Р·РЅР°РєРѕРј ?
+        boolean questionMarkSwitch = false; // признак, что встретился знак вопроса
+        int targetIndex = 0; // индекс со знаком ?
 
-        // РїСЂРѕС…РѕРґРёРј РїРѕ С‡РёСЃР»Сѓ РѕС‚ РјРµРЅСЊС€РёС… СЂР°Р·СЂСЏРґРѕРІ Рє Р±РѕР»СЊС€РёРј
+        // проходим по числу от меньших разрядов к большим
 
 
         for (int i = chars.length - 1; i >= 0; i--) {
             int ind = chars.length - 1 - i;
 //            System.out.println("chars[i] and ind " + chars[i] + " " + ind);
-            // РїСЂРµРѕР±СЂР°Р·СѓРµРј С†РёС„СЂС‹ РІ С‡РёСЃР»Рѕ
+            // преобразуем цифры в число
 
             if (Character.isDigit(chars[i])) {
                 newDigit += (chars[i] - '0') * (Math.pow(10, ind));
@@ -83,7 +83,7 @@ public class Task3 {
                 questionMarkSwitch = true;
 
             } else {
-                System.out.println("РќРµРґРѕРїСѓСЃС‚РёРјРѕРµ Р·РЅР°С‡РµРЅРёРµ: " + str + "\nРџРѕРїСЂРѕР±СѓР№С‚Рµ СЃРЅРѕРІР°");
+                System.out.println("Недопустимое значение: " + str + "\nПопробуйте снова");
                 break;
             }
         }
@@ -101,11 +101,11 @@ public class Task3 {
         int q = qArray[0];
         int qQuestionIndex = qArray[1];
         int qNoQMark = 1;
-        if (qQuestionIndex == -1) qNoQMark = 0; // РµСЃР»Рё РЅРµС‚ Р·РЅР°РєР° РІРѕРїСЂРѕСЃР° РІ С‡РёСЃР»Рµ
+        if (qQuestionIndex == -1) qNoQMark = 0; // если нет знака вопроса в числе
         int w = wArray[0];
         int wQuestionIndex = wArray[1];
         int wNoQMark = 1;
-        if (wQuestionIndex == -1) wNoQMark = 0;  // РµСЃР»Рё РЅРµС‚ Р·РЅР°РєР° РІРѕРїСЂРѕСЃР° РІ С‡РёСЃР»Рµ
+        if (wQuestionIndex == -1) wNoQMark = 0;  // если нет знака вопроса в числе
 
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
@@ -114,43 +114,43 @@ public class Task3 {
 
 
                 if ( (qIter + wIter) == e){
-                    System.out.printf("\nР РµС€РµРЅРёРµ РЅР°Р№РґРµРЅРѕ: " + (int)qIter + " + " + (int)wIter + " = " + e );
+                    System.out.printf("\nРешение найдено: " + (int)qIter + " + " + (int)wIter + " = " + e );
                     return;
                 }
                 
             }
         }
-        System.out.println("\nР РµС€РµРЅРёРµ РЅРµ РЅР°Р№РґРµРЅРѕ");
+        System.out.println("\nРешение не найдено");
     }
 
     public static void Task3Ver2() {
 
-        //  РІРІРѕРґ Р·РЅР°С‡РµРЅРёР№
+        //  ввод значений
 
         Scanner MyScan = new Scanner(System.in);
-        System.out.println("Р РµС€Р°РµРј СѓСЂР°РІРЅРµРЅРёРµ q + w = e. Р’РІРµРґРёС‚Рµ РІС‹СЂР°Р¶РµРЅРёРµ: ");
+        System.out.println("Решаем уравнение q + w = e. Введите выражение: ");
         String formula = MyScan.nextLine();
         formula = formula.replace(" ", "");
         char[] chars = formula.toCharArray();
         int formulaLen = chars.length;
 //        System.out.println(formulaLen);
 
-        // РЅР°С…РѕРґРёРј Р·РЅР°РєРё РІРѕРїСЂРѕСЃР° Рё РѕС‚РјРµС‡Р°РµРј РёС… РїРѕР»РѕР¶РµРЅРёРµ РІ СЃРїРёСЃРєРµ
+        // находим знаки вопроса и отмечаем их положение в списке
 
         List<Integer> questionMarkList = new ArrayList<>();
 
         for (int i = 0; i < formulaLen; i++) {
-//            РџСЂРѕРІРµСЂРєР° РЅР° РїСЂР°РІРёР»СЊРЅРѕСЃС‚СЊ РІРІРѕРґР°
+//            Проверка на правильность ввода
             if (chars[i] != '?' & chars[i] != '+' & chars[i] != '=' & !Character.isDigit(chars[i])) {
-                System.out.println("РћС€РёР±РєР° РІРІРѕРґР°. РџРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰С‘ СЂР°Р·");
+                System.out.println("Ошибка ввода. Попробуйте ещё раз");
                 return;
             }
             if (chars[i] == '?') questionMarkList.add(i);
 
         }
-        System.out.println("РЈСЃРїРµС€РЅС‹Р№ РІРІРѕРґ, РёРґС‘С‚ Р°РЅР°Р»РёР·");
+        System.out.println("Успешный ввод, идёт анализ");
 
-        // РїРѕР»СѓС‡Р°РµРј СЃРїРёСЃРѕРє РјР°СЃСЃРёРІРѕРІ СЃ РїРµСЂРµР±РѕСЂРѕРј РІСЃРµС… РєРѕРјР±РёРЅР°С†РёР№ РёР· n СЂР°Р·СЂСЏРґРѕРІ
+        // получаем список массивов с перебором всех комбинаций из n разрядов
 
         int decade = questionMarkList.size();
         int index = 0;
@@ -163,15 +163,15 @@ public class Task3 {
 //        System.out.println((char) digitsList.get(1)[1]);
 //        System.out.println((int)(char) digitsList.get(1)[1]);
 
-        // Р·Р°РјРµРЅСЏРµРј РїРѕРѕС‡РµСЂС‘РґРЅРѕ Р·РЅР°РєРё РІРѕРїСЂРѕСЃР° РЅР° Р·РЅР°С‡РµРЅРёСЏ С†РёС„СЂ РёР· СЃРїРёСЃРєР° РјР°СЃСЃРёРІРѕРІ
+        // заменяем поочерёдно знаки вопроса на значения цифр из списка массивов
 
-        boolean success = false; // СѓРєР°Р·Р°С‚РµР»СЊ, РЅР°Р№РґРµРЅРѕ Р»Рё СЂРµС€РµРЅРёРµ
+        boolean success = false; // указатель, найдено ли решение
 
-        // РїРѕ РІСЃРµРј СЃРѕС‡РµС‚Р°РЅРёСЏРј С†РёС„СЂ
+        // по всем сочетаниям цифр
 
 
         for (int i = 0; i < Math.pow(10,decade) ; i++) {
-            // РјРµРЅСЏРµРј РІ СЃС‚СЂРѕРєРµ ? РЅР° С†РёС„СЂС‹
+            // меняем в строке ? на цифры
             for (int j = 0; j < questionMarkList.size(); j++) {
 //                chars[questionMarkList.get(j)] = (char) digitsList.get(i)[j];
                 chars[questionMarkList.get(j)] = Character.forDigit(digitsList.get(i)[j],10) ;
@@ -180,7 +180,7 @@ public class Task3 {
 //            System.out.println((int) chars[1]);
 //            System.out.println((int) chars[2]);
 
-            // СЂР°Р·Р±РёСЂР°РµРј С„РѕСЂРјСѓР»Сѓ - РјР°СЃСЃРёРІ РЅР° С†РёС„СЂС‹ Рё Р·РЅР°РєРё + =
+            // разбираем формулу - массив на цифры и знаки + =
             String q = "";
             String w = "";;
             String e = "";;
@@ -208,7 +208,7 @@ public class Task3 {
 
 
             if ((qInt + wInt) == eInt) {
-                System.out.println("Р РµС€РµРЅРёРµ РЅР°Р№РґРµРЅРѕ: " + q + " + " + w + " = " + e + "\n");
+                System.out.println("Решение найдено: " + q + " + " + w + " = " + e + "\n");
                 success = true;
                 return;
 
@@ -216,13 +216,13 @@ public class Task3 {
 
         }
 
-    if (success == false) System.out.println("\nР РµС€РµРЅРёРµ РЅРµ РЅР°Р№РґРµРЅРѕ");
+    if (success == false) System.out.println("\nРешение не найдено");
 
 
     }
 
 
-// Р’Р·СЏС‚ РґР»СЏ РѕСЃРЅРѕРІС‹ РїСЂРёРјРµСЂ СЃ СЃРµРјРёРЅР°СЂР° - РјРµС‚РѕРґ РІС‹С‡РёСЃР»СЏРµС‚ РјР°СЃСЃРёРІС‹ СЃ С†РёС„СЂР°РјРё Рё Р·Р°РїРёСЃС‹РІР°РµС‚ РёС… РІ СЃРїРёСЃРѕРє РјР°СЃСЃРёРІРѕРІ digitsList
+// Взят для основы пример с семинара - метод вычисляет массивы с цифрами и записывает их в список массивов digitsList
     public static void generate(int[] comb, int index) {
         if (comb.length == index){
             digitsList.add(comb.clone());
@@ -237,14 +237,14 @@ public class Task3 {
     }
 
 
-    // РќРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ. РІРѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє СЃРїРёСЃРєРѕРІ РёР· n СЂР°Р·СЂСЏРґРѕРІ
+    // Не используется. возвращает список списков из n разрядов
 
     public static ArrayList<ArrayList<Integer>> ArrArr (int n) {
 
         ArrayList<ArrayList<Integer>> MyArrList = new ArrayList<>();
         int k = (int) Math.pow(10,n);
         for (int i = 0; i < k; i++) {
-            MyArrList.add(ArrGen(i,n)); // РЅР° РїРѕР·РёС†РёСЋ c РёРЅРґРµРєСЃРѕРј n
+            MyArrList.add(ArrGen(i,n)); // на позицию c индексом n
 
         }
 //        System.out.println(MyArrList);
@@ -252,7 +252,7 @@ public class Task3 {
 
     }
 
-    // РќРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ    // СЃРѕР·РґР°С‘С‚ СЃРїРёСЃРѕРє С†РёС„СЂ РёР· С‡РёСЃР»Р° i/ Y
+    // Не используется    // создаёт список цифр из числа i/ Y
     public static ArrayList<Integer> ArrGen(int i, int n) {
         ArrayList<Integer> tempAL = new ArrayList<>(n);
 

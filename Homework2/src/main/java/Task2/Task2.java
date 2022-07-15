@@ -7,14 +7,14 @@ import java.util.Scanner;
 
 public class Task2 {
 
-    private static ArrayList<int[]> digitsList = new ArrayList<>(); // РґР»СЏ  Task3Ver2();
+    private static ArrayList<int[]> digitsList = new ArrayList<>(); // для  Task3Ver2();
 
     public static void main(String[] args) {
 
 
-//        РќР°РїРёСЃР°С‚СЊ РјРµС‚РѕРґ, РєРѕС‚РѕСЂС‹Р№ Р±СѓРґРµС‚ СЌРјСѓР»РёСЂРѕРІР°С‚СЊ СЂР°Р±РѕС‚Сѓ РґРёРЅР°РјРёС‡РµСЃРєРѕРіРѕ РјР°СЃСЃРёРІР° (Р‘РµР· РёСЃРѕРїРѕР»СЊР·РѕРІР°РЅРёСЏ РєРѕР»Р»РµРєС†РёР№),
-//        РїСЂРѕС‚РµСЃС‚РёСЂРѕРІР°С‚СЊ РјРѕР¶РЅРѕ РїСЂРё РІС‹РІРѕРґРµ РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚Рё С‚СЂРµСѓРіРѕР»СЊРЅРѕРіРѕ С‡РёСЃР»Р° РґРѕ n
-//        РџСЂРёРµСЂ
+//        Написать метод, который будет эмулировать работу динамического массива (Без исопользования коллекций),
+//        протестировать можно при выводе последовательности треугольного числа до n
+//        Приер
 //        1
 //        1 3
 //        1 3 6
@@ -24,29 +24,29 @@ public class Task2 {
     }
 
     public static void Task2() {
-        // n - РєРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ РјР°СЃСЃРёРІР°
+        // n - количество элементов массива
         Scanner inputScanner = new Scanner(System.in);
-        System.out.print("Р’РІРµРґРёС‚Рµ n: ");
+        System.out.print("Введите n: ");
 
-        //    РџСЂРѕРІРµСЂРєР° РЅР° СЃРѕРѕС‚РІРµС‚СЃС‚РІРёРµ РїРѕР»СѓС‡Р°РµРјРѕРіРѕ С‚РёРїР°
+        //    Проверка на соответствие получаемого типа
         while (inputScanner.hasNextInt()==false){
-            System.out.print("РћС€РёР±РєР° РІРІРѕРґР°. РўСЂРµР±СѓРµС‚СЃСЏ РІРІРµСЃС‚Рё С†РµР»РѕРµ С‡РёСЃР»Рѕ: ");
+            System.out.print("Ошибка ввода. Требуется ввести целое число: ");
             inputScanner.next();
         }
 
         int n = inputScanner.nextInt();
 //        System.out.println(n);
 
-//      СЃРѕР·РґР°С‘Рј СЃР»СѓР¶РµР±РЅС‹Р№ РјР°СЃСЃРёРІ
+//      создаём служебный массив
         int[] tempArray = new int[0];
 
         for (int i = 0; i < n; i++) {
-//          СЃРѕР·РґР°С‘Рј РЅРѕРІС‹Р№ СЌР»РµРјРµРЅС‚ Р°Р»РіРѕСЂРёС‚РјРѕРј С‚СЂРµСѓРіРѕР»СЊРЅРѕРіРѕ С‡РёСЃР»Р°
+//          создаём новый элемент алгоритмом треугольного числа
             int newElement = triangle(i+1);
-//          РґРѕР±Р°РІР»СЏРµРј РЅРѕРІС‹Р№ СЌР»РµРјРµРЅС‚ РІ РЅРѕРІС‹Р№ РјР°СЃСЃРёРІ
+//          добавляем новый элемент в новый массив
             int[] newArray = addArrayElement(tempArray, newElement, i);
 
-            System.out.println("РЎРіРµРЅРµСЂРёСЂРѕРІР°РЅ РјР°СЃСЃРёРІ: ");
+            System.out.println("Сгенерирован массив: ");
             System.out.println(Arrays.toString(newArray));
             tempArray = newArray;
 
@@ -55,15 +55,15 @@ public class Task2 {
        }
 
     public static int triangle(int n) {
-//      Р’РѕР·РІСЂР°С‰Р°РµС‚ n-РѕРµ С‚СЂРµСѓРіРѕР»СЊРЅРѕРіРѕ С‡РёСЃР»Р°.
+//      Возвращает n-ое треугольного числа.
 
         int t = (int)(1d/2*n*(n+1));
 
-//        System.out.printf("Р РµР·СѓР»СЊС‚Р°С‚ %d \n", t);
+//        System.out.printf("Результат %d \n", t);
         return t;
     }
 
-    // РґРѕР±Р°РІР»СЏРµС‚ СЌР»РµРјРµРЅС‚ Рє РјР°СЃСЃРёРІСѓ
+    // добавляет элемент к массиву
     public static int[] addArrayElement(int[] oldArray, int newElement, int index) {
 
         int newArray[] = new int[index+1];
