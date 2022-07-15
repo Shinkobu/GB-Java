@@ -4,40 +4,40 @@ import java.util.*;
 
 public class Task1 {
     public static void main(String[] args) {
-//        Создать карту (Map), будет хранить в себе данные телефонной книги (Фамилии и телефонные номера),
-//        если будут дубликаты фамилий, то должны выводиться оба номера (если помним Map не может хранить дубликаты,
-//        будет заменять номер телефона по ключу, нужно подумать как не допустить такого)
+//        РЎРѕР·РґР°С‚СЊ РєР°СЂС‚Сѓ (Map), Р±СѓРґРµС‚ С…СЂР°РЅРёС‚СЊ РІ СЃРµР±Рµ РґР°РЅРЅС‹Рµ С‚РµР»РµС„РѕРЅРЅРѕР№ РєРЅРёРіРё (Р¤Р°РјРёР»РёРё Рё С‚РµР»РµС„РѕРЅРЅС‹Рµ РЅРѕРјРµСЂР°),
+//        РµСЃР»Рё Р±СѓРґСѓС‚ РґСѓР±Р»РёРєР°С‚С‹ С„Р°РјРёР»РёР№, С‚Рѕ РґРѕР»Р¶РЅС‹ РІС‹РІРѕРґРёС‚СЊСЃСЏ РѕР±Р° РЅРѕРјРµСЂР° (РµСЃР»Рё РїРѕРјРЅРёРј Map РЅРµ РјРѕР¶РµС‚ С…СЂР°РЅРёС‚СЊ РґСѓР±Р»РёРєР°С‚С‹,
+//        Р±СѓРґРµС‚ Р·Р°РјРµРЅСЏС‚СЊ РЅРѕРјРµСЂ С‚РµР»РµС„РѕРЅР° РїРѕ РєР»СЋС‡Сѓ, РЅСѓР¶РЅРѕ РїРѕРґСѓРјР°С‚СЊ РєР°Рє РЅРµ РґРѕРїСѓСЃС‚РёС‚СЊ С‚Р°РєРѕРіРѕ)
 
-//        1) Создаём справочник
+//        1) РЎРѕР·РґР°С‘Рј СЃРїСЂР°РІРѕС‡РЅРёРє
 
         Map<String, ArrayList<String>> PhoneBook = new HashMap<>();
 
-        // ввод данных
+        // РІРІРѕРґ РґР°РЅРЅС‹С…
 
         ArrayList<String> MyAL = new ArrayList<>();
         MyAL.add("224488");
 
-        PhoneBook.put("Иванов", (ArrayList<String>) MyAL.clone());
+        PhoneBook.put("РРІР°РЅРѕРІ", (ArrayList<String>) MyAL.clone());
 
         MyAL.clear();
         MyAL.add("221188");
         MyAL.add("331526");
         MyAL.add("448783");
 
-        PhoneBook.put("Кузнецов", (ArrayList<String>) MyAL.clone());
+        PhoneBook.put("РљСѓР·РЅРµС†РѕРІ", (ArrayList<String>) MyAL.clone());
         MyAL.clear();
         MyAL.add("446622");
         MyAL.add("559988");
 
-        PhoneBook.put("Соколов", (ArrayList<String>) MyAL.clone());
+        PhoneBook.put("РЎРѕРєРѕР»РѕРІ", (ArrayList<String>) MyAL.clone());
         MyAL.clear();
 
-//        2) Ищем фамилию
-        System.out.println("\nИмеем справочник: " + PhoneBook + "\nВведите фамилию для поиска: ");
+//        2) РС‰РµРј С„Р°РјРёР»РёСЋ
+        System.out.println("\nРРјРµРµРј СЃРїСЂР°РІРѕС‡РЅРёРє: " + PhoneBook + "\nР’РІРµРґРёС‚Рµ С„Р°РјРёР»РёСЋ РґР»СЏ РїРѕРёСЃРєР°: ");
         Scanner myScanner = new Scanner(System.in);
         String Surname = myScanner.nextLine();
         myScanner.close();
-//        проход по map через entryset
+//        РїСЂРѕС…РѕРґ РїРѕ map С‡РµСЂРµР· entryset
 
 //        Iterator myIter = PhoneBook.entrySet().iterator()
 
@@ -45,10 +45,10 @@ public class Task1 {
 
         for (Map.Entry myEntry : PhoneBook.entrySet()) {
             if (Objects.equals(Surname, myEntry.getKey())){
-                System.out.println("Найдена запись в справочнике: \n Фамилия: " + myEntry.getKey() + "\n Контакты: " + myEntry.getValue());
+                System.out.println("РќР°Р№РґРµРЅР° Р·Р°РїРёСЃСЊ РІ СЃРїСЂР°РІРѕС‡РЅРёРєРµ: \n Р¤Р°РјРёР»РёСЏ: " + myEntry.getKey() + "\n РљРѕРЅС‚Р°РєС‚С‹: " + myEntry.getValue());
                 findSuccess = true;
             }
         }
-        if (!findSuccess) System.out.println("Запись не найдена");
+        if (!findSuccess) System.out.println("Р—Р°РїРёСЃСЊ РЅРµ РЅР°Р№РґРµРЅР°");
     }
 }
