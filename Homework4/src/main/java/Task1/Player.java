@@ -1,23 +1,25 @@
 package Task1;
 
-public class People {
+public abstract class Player {
 
     // у человека будет имя, команда, скорость плавания
 
     private String name;
-    private String team;
+    private Integer team;
     private Integer swimSpeed;
 
-    public People(String name, String team){ // Уточнить, это конструктор????????????
+    public Player(String name, Integer team, Integer swimSpeed){ // Это конструктор
         this.name = name;
         this.team = team;
+        this.swimSpeed = swimSpeed;
     }
 
     public String getName(){
         return name;
     }
 
-    public String getTeam(){
+    public Integer getTeam(){
         return team;
     }
+
 }
