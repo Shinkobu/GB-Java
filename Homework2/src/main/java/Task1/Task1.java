@@ -7,13 +7,13 @@ import java.util.Scanner;
 
 public class Task1 {
 
-    private static ArrayList<int[]> digitsList = new ArrayList<>(); // для  Task3Ver2();
+    private static ArrayList<int[]> digitsList = new ArrayList<>(); // РґР»СЏ  Task3Ver2();
 
     public static void main(String[] args) {
 
 
-//      У вас есть отсортированный массив
-//      нужно используя минимальное количество попыток найти загаданное число (Алгоритм бинарного поиска)
+//      РЈ РІР°СЃ РµСЃС‚СЊ РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅС‹Р№ РјР°СЃСЃРёРІ
+//      РЅСѓР¶РЅРѕ РёСЃРїРѕР»СЊР·СѓСЏ РјРёРЅРёРјР°Р»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ РїРѕРїС‹С‚РѕРє РЅР°Р№С‚Рё Р·Р°РіР°РґР°РЅРЅРѕРµ С‡РёСЃР»Рѕ (РђР»РіРѕСЂРёС‚Рј Р±РёРЅР°СЂРЅРѕРіРѕ РїРѕРёСЃРєР°)
 
         Task1();
 
@@ -24,34 +24,34 @@ public class Task1 {
     public static void Task1() {
 
         Scanner myScan = new Scanner(System.in);
-        int rawArray[]; // объявление массива
-        rawArray = new int[10]; // выделение памяти для массива
+        int rawArray[]; // РѕР±СЉСЏРІР»РµРЅРёРµ РјР°СЃСЃРёРІР°
+        rawArray = new int[10]; // РІС‹РґРµР»РµРЅРёРµ РїР°РјСЏС‚Рё РґР»СЏ РјР°СЃСЃРёРІР°
 //        sortedArray = new int[] {1,2,3,4,5,6,7,8,9,10};
 
-        // Заполняем массив случайными числами
+        // Р—Р°РїРѕР»РЅСЏРµРј РјР°СЃСЃРёРІ СЃР»СѓС‡Р°Р№РЅС‹РјРё С‡РёСЃР»Р°РјРё
         for (int i = 0; i < rawArray.length ; i++) {
-            rawArray[i] = (int) (Math.random()*100); // Диапазон [0;1) умножается на 100. ( Math.random() * (b-a) ) + a, при интервале (a;b]
+            rawArray[i] = (int) (Math.random()*100); // Р”РёР°РїР°Р·РѕРЅ [0;1) СѓРјРЅРѕР¶Р°РµС‚СЃСЏ РЅР° 100. ( Math.random() * (b-a) ) + a, РїСЂРё РёРЅС‚РµСЂРІР°Р»Рµ (a;b]
         }
-        System.out.println("Сгенерирован массив: ");
+        System.out.println("РЎРіРµРЅРµСЂРёСЂРѕРІР°РЅ РјР°СЃСЃРёРІ: ");
         System.out.println(Arrays.toString(rawArray));
 
-        // сортировка
+        // СЃРѕСЂС‚РёСЂРѕРІРєР°
         int [] sortedArray = shuttleSort(rawArray);
 
 
-        System.out.println("\nОтсортированный массив: ");
+        System.out.println("\nРћС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅС‹Р№ РјР°СЃСЃРёРІ: ");
         System.out.println(Arrays.toString(sortedArray));
-        System.out.printf("\nВведите искомое число: ");
+        System.out.printf("\nР’РІРµРґРёС‚Рµ РёСЃРєРѕРјРѕРµ С‡РёСЃР»Рѕ: ");
 
-        // проверка на вводимое число
+        // РїСЂРѕРІРµСЂРєР° РЅР° РІРІРѕРґРёРјРѕРµ С‡РёСЃР»Рѕ
         while (myScan.hasNextInt()==false){
-            System.out.printf("Ошибка ввода. Требуется ввести целое число: ");
+            System.out.printf("РћС€РёР±РєР° РІРІРѕРґР°. РўСЂРµР±СѓРµС‚СЃСЏ РІРІРµСЃС‚Рё С†РµР»РѕРµ С‡РёСЃР»Рѕ: ");
             myScan.next();
         }
         int digitToFind = myScan.nextInt();
         myScan.close();
 
-        // поиск числа рекурсией
+        // РїРѕРёСЃРє С‡РёСЃР»Р° СЂРµРєСѓСЂСЃРёРµР№
         Task1RecursionSearch(sortedArray,digitToFind,0,sortedArray.length-1);
     }
 
@@ -60,11 +60,11 @@ public class Task1 {
      int targetIndex = (firstIndex+lastIndex) / 2;
 
      if (firstIndex==lastIndex){
-         System.out.println("\nЧисло не найдено\n");
+         System.out.println("\nР§РёСЃР»Рѕ РЅРµ РЅР°Р№РґРµРЅРѕ\n");
          return;
      }
      if (sortedArray[targetIndex] == digitToFind) {
-         System.out.printf("\nНайдено число на позиции %d\n", targetIndex+1);
+         System.out.printf("\nРќР°Р№РґРµРЅРѕ С‡РёСЃР»Рѕ РЅР° РїРѕР·РёС†РёРё %d\n", targetIndex+1);
          return;
      }
 
