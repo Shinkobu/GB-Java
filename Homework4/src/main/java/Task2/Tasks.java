@@ -9,5 +9,9 @@ public abstract class Tasks {
     public abstract int prioritet(); // метод абстрактный, требует реализации в классе наследнике
 
     public abstract long time(); // метод абстрактный, требует реализации в классе наследнике
-}
+
+    public abstract String name();
+
+    }
+
 

@@ -11,4 +11,9 @@ public class SurnameChange extends Tasks {
     public long time() {
         return 5;
     }
+
+    @Override
+    public String name() {
+        return "SurnameChange";
+    }
 }

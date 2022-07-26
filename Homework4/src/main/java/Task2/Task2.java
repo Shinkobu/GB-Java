@@ -1,7 +1,5 @@
 package Task2;
 
-import Task1.Task;
-
 import java.util.*;
 
 public class Task2 {
@@ -10,7 +8,7 @@ public class Task2 {
 //      Задачи
         Tasks passport = new Passport();
         Tasks carLicense = new CarLicense();
-        Tasks kinderGarden = new KinderGargen();
+        Tasks kinderGarden = new KinderGarden();
         Tasks flatRegistration = new FlatRegistration();
         Tasks childBirth = new ChildBirth();
         Tasks pension = new Pension();
@@ -44,6 +42,7 @@ public class Task2 {
 
         System.out.println("\nИмеем массив с индексами: \n" + Arrays.toString(indexArr));
 
+//      Очередь задач
 
         Deque<Tasks> myQueue = new LinkedList<Tasks>();
 
@@ -52,12 +51,24 @@ public class Task2 {
         }
         System.out.println("\nИмеем очередь заданий: \n" + myQueue);
 
+//      Начало работы МФЦ
+
         System.out.println("\nНачало работы\n");
+
+        int s = 1;
 
 //        if (myQueue.peekFirst().prioritet() > myQueue.peekFirst().prioritet())
         while (myQueue.size() != 0){
-            System.out.println(myQueue);
+
+            Iterator<Tasks> myIterator = myQueue.iterator();
+            String showStr = "";
+            while (myIterator.hasNext()){
+                showStr += myIterator.next().name() + " / ";
+            }
+
+            System.out.println("Шаг "+s+". Очередь имеет вид: " + showStr);
             myQueue.pollFirst();
+            s++;
 
         }
 

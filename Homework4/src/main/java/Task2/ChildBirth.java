@@ -11,4 +11,9 @@ public class ChildBirth extends Tasks {
     public long time() {
         return 3;
     }
+
+    @Override
+    public String name() {
+        return "ChildBirth";
+    }
 }

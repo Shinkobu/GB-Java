@@ -11,4 +11,9 @@ public class Pension extends Tasks {
     public long time() {
         return 5;
     }
+
+    @Override
+    public String name() {
+        return "Pension";
+    }
 }

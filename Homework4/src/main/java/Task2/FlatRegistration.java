@@ -11,4 +11,9 @@ public class FlatRegistration extends Tasks {
     public long time() {
         return 7;
     }
+
+    @Override
+    public String name() {
+        return "FlatRegistration";
+    }
 }

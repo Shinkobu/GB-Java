@@ -1,6 +1,6 @@
 package Task2;
 
-public class KinderGargen extends Tasks {
+public class KinderGarden extends Tasks {
 
     @Override
     public int prioritet() {
@@ -10,5 +10,10 @@ public class KinderGargen extends Tasks {
     @Override
     public long time() {
         return 5;
+    }
+
+    @Override
+    public String name() {
+        return "Kindergarten";
     }
 }
