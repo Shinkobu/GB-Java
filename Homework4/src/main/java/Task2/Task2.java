@@ -3,7 +3,7 @@ package Task2;
 import java.util.*;
 
 public class Task2 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
 //      Задачи
         Tasks passport = new Passport();
@@ -37,37 +37,55 @@ public class Task2 {
         }
 
         List <Integer> tempList = Arrays.asList(indexArr);
+//      Случайный порядок (массив имеет индексы, которые будут обозначать место объекта в tasksList)
         Collections.shuffle(tempList);
         tempList.toArray(indexArr);
 
         System.out.println("\nИмеем массив с индексами: \n" + Arrays.toString(indexArr));
 
-//      Очередь задач, её заполнение
+//      Очередь задач
 
-        Deque<Tasks> myQueue = new LinkedList<Tasks>();
+        Deque<Tasks> myQueueNoPrior = new LinkedList<Tasks>();
 
         for (int i = 0; i < indexArr.length; i++) {
+            myQueueNoPrior.add(tasksList.get(indexArr[i]));
+        }
 
-//          Определение приоритета попадания в очередь
+        myIterator(myQueueNoPrior," Исходная очередь имеет вид: ");
 
-            try {
-                Integer d1 = indexArr[i];
-                Integer d2 = indexArr[i+1];
+//      Расстановка очереди с учётом приоритета
 
-                if (d1 < d2){
-                    Integer tempInt = indexArr[i];
-                    indexArr[i] = indexArr[i+1];
-                    indexArr[i+1] = tempInt;
-                }
-            }catch (ArrayIndexOutOfBoundsException e){
+        Deque<Tasks> myQueuePrior = new LinkedList<Tasks>();
 
+        int j = myQueueNoPrior.size();
+        Tasks temp1 = myQueueNoPrior.pop();
+        Tasks temp2 = myQueueNoPrior.pop();
+
+        for (int i = 0; i < j-2; i++) {
+
+            if (temp1.prioritet()>temp2.prioritet()) {
+                myQueuePrior.add(temp1);
+                temp1 = myQueueNoPrior.pop();
+            }
+            else {
+                myQueuePrior.add(temp2);
+                temp2 = myQueueNoPrior.pop();
             }
 
-            System.out.println("Расстановка с учётом приоритета: " + Arrays.toString(indexArr));
-
-            myQueue.add(tasksList.get(indexArr[i]));
+//            myIterator(myQueueNoPrior);
+//            myIterator(myQueuePrior);
         }
-        System.out.println("\nИмеем очередь заданий: \n" + myQueue);
+
+        if (temp1.prioritet()>temp2.prioritet()) {
+            myQueuePrior.add(temp1);
+            myQueuePrior.add(temp2);
+        }
+        else {
+            myQueuePrior.add(temp2);
+            myQueuePrior.add(temp1);
+        }
+
+        myIterator(myQueuePrior, " Очередь с поправкой на приоритет: ");
 
 //      Начало работы МФЦ
 
@@ -75,25 +93,28 @@ public class Task2 {
 
         int s = 1;
 
-//        if (myQueue.peekFirst().prioritet() > myQueue.peekFirst().prioritet())
-        while (myQueue.size() != 0){
+        while (myQueuePrior.size() != 0){
 
-            Iterator<Tasks> myIterator = myQueue.iterator();
-            Iterator<Tasks> myIterator1 = myQueue.iterator();
-            String showName = "";
-            String showPrior = "";
-            while (myIterator.hasNext()) showName += myIterator.next().name() + " / ";
-            while (myIterator1.hasNext()) showPrior += myIterator1.next().prioritet() + " / ";
-
-
-            System.out.println("Шаг "+s+". Очередь имеет вид: " + showName);
-            System.out.println("       Приоритет: " + showPrior);
-
-            myQueue.pollFirst();
+            myIterator(myQueuePrior,"Шаг "+s+". Очередь имеет вид: ");
+            System.out.println("       В окно идёт задача " + myQueuePrior.peekFirst().name());
+            myQueuePrior.pollFirst();
             s++;
+            Thread.sleep(1000);
 
         }
 
 
     }
+
+    public static void myIterator(Queue <Tasks> someQueue, String queueComment) {
+        Iterator<Tasks> myIterator = someQueue.iterator();
+        Iterator<Tasks> myIterator1 = someQueue.iterator();
+        String showName = "";
+        String showPrior = "";
+        while (myIterator.hasNext()) showName += myIterator.next().name() + " / ";
+        while (myIterator1.hasNext()) showPrior += myIterator1.next().prioritet() + " / ";
+        System.out.println("\n" + queueComment + showName);
+        System.out.println("       Приоритеты объектов очереди: " + showPrior);
+    }
+
 }
