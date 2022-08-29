@@ -4,11 +4,7 @@ import java.util.List;
 
 public abstract class FamilyHistory {
 
-    public List<Link> getLinks() {
-        return null;
-    };
+    public abstract List<Link> getLinks();
 
-    public void addLink(Human p1, Human p2, Relation link1, Relation link2) {
-
-    }
+    public abstract void addLink(Human p1, Human p2, Relation link1, Relation link2);
 }

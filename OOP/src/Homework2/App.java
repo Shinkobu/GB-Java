@@ -1,17 +1,19 @@
 package Homework2;
 
 import java.util.Scanner;
+import java.util.*;
+import java.util.TreeSet;
 
 public class App {
 
     public static void main(String[] args) {
-        Human person1 = new Person("Александр Невский");
-        Human person2 = new Person("Даниил");
-        Human person3 = new Person("Юрий");
-        Human person4 = new Person("Иван Калита");
-        Human person5 = new Person("Семён Гордый");
-        Human person6 = new Person("Иван II Красный");
-        Human person7 = new Person("Дмитрий Донской");
+        Human person1 = new Person("Александр Невский", 1221);
+        Human person2 = new Person("Даниил", 1261);
+        Human person3 = new Person("Юрий", 1281);
+        Human person4 = new Person("Иван Калита", 1322);
+        Human person5 = new Person("Семён Гордый", 1317);
+        Human person6 = new Person("Иван II Красный", 1326);
+        Human person7 = new Person("Дмитрий Донской", 1350);
 
 
         FamilyHistory tree = new Tree();
@@ -39,7 +41,8 @@ public class App {
                 "1 - Определить детей\n" +
                 "2 - Определить братьев/сестёр\n" +
                 "3 - Определить родителей\n" +
-                "4 - Определить дедушек и бабушек\n");
+                "4 - Определить дедушек и бабушек\n" +
+                "5 - Вывести отсортированный список\n");
 
 //        int choice = myScan.nextInt();
 
@@ -50,18 +53,36 @@ public class App {
 
         String name = myScan.nextLine();
 
-        switch (choice){
+
+        switch (choice) {
             case 1:
-                Research.printAllRelatives(name,tree, Relation.PARENT);
+                Research.printAllRelatives(name, tree, Relation.PARENT);
                 break;
             case 2:
-                Research.printAllRelatives(name,tree, Relation.SIBLING);
+                Research.printAllRelatives(name, tree, Relation.SIBLING);
                 break;
             case 3:
-                Research.printAllRelatives(name,tree, Relation.CHILD);
+                Research.printAllRelatives(name, tree, Relation.CHILD);
                 break;
             case 4:
-                Research.printAllRelatives(name,tree, Relation.GRANDCHILD);
+                Research.printAllRelatives(name, tree, Relation.GRANDCHILD);
+                break;
+            case 5:
+
+                Set mySet = new TreeSet();
+                mySet.add(person1);
+                mySet.add(person2);
+                mySet.add(person3);
+                mySet.add(person4);
+                mySet.add(person5);
+                mySet.add(person6);
+                mySet.add(person7);
+
+                for (Object o: mySet){
+                    System.out.println(o);
+                }
+
+
                 break;
             default:
                 System.out.println("Введено неверное значение");

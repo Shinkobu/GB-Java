@@ -2,9 +2,7 @@
 'https://plantuml.com/class-diagram
 
 
-abstract class Human
 class Person
-Human <|- Person
 
 enum Relation{
     CHILD,
@@ -15,14 +13,9 @@ enum Relation{
     }
 
 class Research
-interface ResearchMethods
-class Research implements ResearchMethods
 
 
-
-abstract class FamilyHistory
 class Tree
-FamilyHistory <|-- Tree
 class Link
 
 class App
@@ -31,18 +24,15 @@ Person<..App
 Relation<..App
 Research<..App
 
-Link<.. FamilyHistory
-Person<.. FamilyHistory
-Relation<.. FamilyHistory
-
 Person<.. Link
 Relation<.. Link
 
 Relation<.. Research
-FamilyHistory<.. Research
+
 Link<.. Research
 
 Link<.. Tree
+Person<.. Tree
 
 
 
