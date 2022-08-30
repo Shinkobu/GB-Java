@@ -1,11 +1,13 @@
 package Homework2;
 
-public class Person extends Human implements Comparable<Person>{
+import java.util.Iterator;
+
+public class Person extends Human implements Comparable<Person>, Iterator<String> {
 
     public Person(String name, Integer birthYear) {
         super(name,birthYear);
     }
-
+    Integer index = 0;
     @Override
     public String toString() {
         return "Person{" +
@@ -22,5 +24,22 @@ public class Person extends Human implements Comparable<Person>{
     @Override
     public int compareTo(Person o) {
         return this.birthYear - o.birthYear;
+    }
+
+    @Override
+    public boolean hasNext() {
+        return index++ < 2;
+    }
+
+    @Override
+    public String next() {
+        switch (index) {
+            case 1:
+                return String.format("Имя: %s", name);
+            case 2:
+                return String.format("Год рождения: %s", birthYear);
+    }
+
+        return null;
     }
 }

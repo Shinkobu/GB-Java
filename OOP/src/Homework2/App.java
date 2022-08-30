@@ -42,16 +42,19 @@ public class App {
                 "2 - Определить братьев/сестёр\n" +
                 "3 - Определить родителей\n" +
                 "4 - Определить дедушек и бабушек\n" +
-                "5 - Вывести отсортированный список\n");
+                "5 - Вывести отсортированный список (Comparable)\n" +
+                "6 - Вывести данные по персоне (Iterator)\n");
 
 //        int choice = myScan.nextInt();
 
         int choice = 0;
         choice = Integer.parseInt(myScan.nextLine());
+        String name = null;
 
-        System.out.println("Введите имя:\n");
-
-        String name = myScan.nextLine();
+        if (choice !=5) {
+            System.out.println("Введите имя:\n");
+            name = myScan.nextLine();
+        }
 
 
         switch (choice) {
@@ -81,9 +84,33 @@ public class App {
                 for (Object o: mySet){
                     System.out.println(o);
                 }
-
-
                 break;
+            case 6:
+
+                List <Human> myArList = new ArrayList<>();
+                myArList.add(person1);
+                myArList.add(person2);
+                myArList.add(person3);
+                myArList.add(person4);
+                myArList.add(person5);
+                myArList.add(person6);
+                myArList.add(person7);
+
+                Human foundPerson = null;
+                Iterator<Human> myIter = myArList.iterator();
+                while (myIter.hasNext() && foundPerson == null) {
+                    Human tempHuman = myIter.next();
+                    String tempName = tempHuman.name;
+                    if (tempName.equals(name)) {
+                        foundPerson = tempHuman;
+                    }
+                }
+                Iterator<String> PersonData = (Person) foundPerson;
+                while (PersonData.hasNext()){
+                    System.out.println(PersonData.next());
+                }
+                break;
+
             default:
                 System.out.println("Введено неверное значение");
         }
