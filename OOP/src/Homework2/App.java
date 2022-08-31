@@ -34,6 +34,15 @@ public class App {
         tree.addLink(person2, person6, Relation.GRANDPARENT, Relation.GRANDCHILD);
         tree.addLink(person4, person7, Relation.GRANDPARENT, Relation.GRANDCHILD);
 
+        List <Human> myArList = new ArrayList<>();
+        myArList.add(person1);
+        myArList.add(person2);
+        myArList.add(person3);
+        myArList.add(person4);
+        myArList.add(person5);
+        myArList.add(person6);
+        myArList.add(person7);
+
         System.out.println("Программа готова к работе\n");
 
         Scanner myScan = new Scanner(System.in);
@@ -87,15 +96,6 @@ public class App {
                 break;
             case 6:
 
-                List <Human> myArList = new ArrayList<>();
-                myArList.add(person1);
-                myArList.add(person2);
-                myArList.add(person3);
-                myArList.add(person4);
-                myArList.add(person5);
-                myArList.add(person6);
-                myArList.add(person7);
-
                 Human foundPerson = null;
                 Iterator<Human> myIter = myArList.iterator();
                 while (myIter.hasNext() && foundPerson == null) {
@@ -109,6 +109,24 @@ public class App {
                 while (PersonData.hasNext()){
                     System.out.println(PersonData.next());
                 }
+                break;
+
+            case 7:
+
+//                Human foundPerson1 = null;
+//                Iterator<Human> myIter1 = myArList.iterator();
+//                while (myIter1.hasNext() && foundPerson1 == null) {
+//                    Human tempHuman = myIter1.next();
+//                    String tempName = tempHuman.name;
+//                    if (tempName.equals(name)) {
+//                        foundPerson1 = tempHuman;
+//                    }
+//                }
+//
+//                for (Object element : foundPerson1){
+//                    System.out.println(element);
+                }
+
                 break;
 
             default:

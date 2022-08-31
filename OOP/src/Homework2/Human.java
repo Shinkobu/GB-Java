@@ -1,6 +1,6 @@
 package Homework2;
 
-public abstract class Human {
+public abstract class Human implements Iterable {
 
     public String name;
     public Integer birthYear;
