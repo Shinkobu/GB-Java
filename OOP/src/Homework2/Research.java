@@ -1,5 +1,7 @@
 package Homework2;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Research implements ResearchMethods {
@@ -20,6 +22,19 @@ public class Research implements ResearchMethods {
         if (!isFound) {
             System.out.println("Родственники не найдены");
         }
+    }
+
+    public static Person findPerson(String name, List myArList) {
+        Human foundPerson = null;
+        Iterator<Human> myIter = myArList.iterator();
+        while (myIter.hasNext() && foundPerson == null) {
+            Human tempHuman = myIter.next();
+            String tempName = tempHuman.name;
+            if (tempName.equals(name)) {
+                return (Person) tempHuman;
+            }
+        }
+        return null;
     }
 
 }

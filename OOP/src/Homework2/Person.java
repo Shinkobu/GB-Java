@@ -4,8 +4,8 @@ import java.util.Iterator;
 
 public class Person extends Human implements Comparable<Person>, Iterator<String> {
 
-    public Person(String name, Integer birthYear) {
-        super(name,birthYear);
+    public Person(String name, Integer birthYear, Integer deathYear) {
+        super(name,birthYear,deathYear);
     }
     Integer index = 0;
 
@@ -17,29 +17,25 @@ public class Person extends Human implements Comparable<Person>, Iterator<String
 
             @Override
             public boolean hasNext() {
-                return index < 2;
+                return index < titles.size();
             }
 
             @Override
             public String next() {
-                switch (index) {
-                    case 1:
-                        return String.format("Имя: %s", name);
-                    case 2:
-                        return String.format("Год рождения: %s", birthYear);
+                return titles.get(index++);
                 }
-                return null;
-            }
 
-        };
+            };
         return it;
-    }
+        }
+
 
     @Override
     public String toString() {
         return "Person{" +
                 "name='" + name + '\'' +
                 ", birthYear=" + birthYear +
+                ", deathYear=" + deathYear +
                 '}';
     }
 
@@ -50,7 +46,12 @@ public class Person extends Human implements Comparable<Person>, Iterator<String
 
     @Override
     public int compareTo(Person o) {
-        return this.birthYear - o.birthYear;
+        if (this.birthYear > o.birthYear)
+            return 1;
+        else if (this.birthYear < o.birthYear)
+            return -1;
+        else
+            return 0;
     }
 
     @Override
