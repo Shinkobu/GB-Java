@@ -19,6 +19,7 @@ public class Controller {
                 Database.showDB();
                 break;
             case 3:
+                findTaskByID();
 
 
                 break;
@@ -70,6 +71,30 @@ public class Controller {
             System.out.println("\nЗадача c id " + tempID + " удалена!");
             System.out.println("\nБаза данных после удаления имеет вид:\n");
             Database.showDB();
+        }else {
+            System.out.println("\nЗадача c id " + tempID + " не найдена!");
+            System.out.println("\nБаза данных имеет вид:\n");
+            Database.showDB();
+        }
+
+    }
+
+    public static void findTaskByID() {
+        Scanner myScan = new Scanner(System.in);
+
+        System.out.println("\nБаза данных имеет вид:\n");
+        Database.showDB();
+
+        System.out.println("Введите id задачи для поиска\n");
+        Long tempID = myScan.nextLong();
+
+        TasksRepository tasksRepo = new TasksRepository();
+
+        Task foundTask = tasksRepo.findById(tempID);
+
+        if (foundTask != null) {
+            System.out.println("\nЗадача c id " + tempID + " найдена!");
+            System.out.println(foundTask.toString());
         }else {
             System.out.println("\nЗадача c id " + tempID + " не найдена!");
             System.out.println("\nБаза данных имеет вид:\n");

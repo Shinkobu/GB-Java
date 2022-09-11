@@ -3,6 +3,7 @@ package Homework4;
 import Homework4.example.Data;
 
 import java.time.LocalDateTime;
+import java.util.Iterator;
 import java.util.List;
 
 public class TasksRepository implements Repository<Task,Long> {
@@ -20,10 +21,11 @@ public class TasksRepository implements Repository<Task,Long> {
         List<Task> tempDB = Database.getTaskDatabase();
         boolean isRemoved = false;
 
-        for (Task element: tempDB){
-            if (element.getId() == aLong){
-                tempDB.remove(element);
-                isRemoved = true;
+        Iterator<Task> taskIterator = tempDB.iterator();
+        while(taskIterator.hasNext()){
+            Task tempTask = taskIterator.next();
+            if(tempTask.getId().equals(aLong)){
+                taskIterator.remove();
             }
         }
         return isRemoved;
@@ -31,7 +33,21 @@ public class TasksRepository implements Repository<Task,Long> {
 
     @Override
     public Task findById(Long aLong) {
-        return null;
+        List<Task> tempDB = Database.getTaskDatabase();
+        boolean isFound = false;
+        Task tempTask = null;
+        Task foundTask = null;
+
+        Iterator<Task> taskIterator = tempDB.iterator();
+        while(taskIterator.hasNext() && !isFound){
+            tempTask = taskIterator.next();
+            if(tempTask.getId().equals(aLong)){
+                isFound = true;
+                foundTask = tempTask;
+
+            }
+        }
+        return foundTask;
     }
 
     @Override
