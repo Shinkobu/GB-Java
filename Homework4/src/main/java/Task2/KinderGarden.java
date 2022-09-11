@@ -1,0 +1,19 @@
+package Task2;
+
+public class KinderGarden extends Tasks {
+
+    @Override
+    public int prioritet() {
+        return 3;
+    }
+
+    @Override
+    public long time() {
+        return 5;
+    }
+
+    @Override
+    public String name() {
+        return "Kindergarten";
+    }
+}
