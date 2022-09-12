@@ -39,4 +39,24 @@ public class Task {
                 ", автор:  '" + Author + 
                 ", срок исполнения: '" + deadline;
     }
+
+    public LocalDateTime getCreatedDateTime() {
+        return createdDateTime;
+    }
+
+    public Description getDescription() {
+        return description;
+    }
+
+    public Priority getPriority() {
+        return priority;
+    }
+
+    public String getAuthor() {
+        return Author;
+    }
+
+    public String getDeadline() {
+        return deadline;
+    }
 }

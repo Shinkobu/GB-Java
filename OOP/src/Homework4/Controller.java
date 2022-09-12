@@ -45,7 +45,8 @@ public class Controller {
                 "3 - Найти задачу по ID\n" +
                 "4 - Удалить задачу по ID\n" +
                 "5 - Обновить задачу по ID\n" +
-//                "8 - Вывести отсортированный список по датам рождения в обратном порядке (Comparator)\n" +
+                "6 - Экспорт в CSV\n" +
+                "7 - Импорт из CSV\n" +
                 "9 - Завершить работу \n");
 
         int choice = 0;
@@ -139,7 +140,7 @@ public class Controller {
 
         Database.showDB();
 
-//        AppendToCSV(taskName, deadline, priority, author);
+
 
     }
 }
