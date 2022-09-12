@@ -1,9 +1,9 @@
 package Homework4;
 
-import com.opencsv.CSVReader;
-import com.opencsv.CSVWriter;
-import com.opencsv.exceptions.CsvException;
-import com.opencsv.exceptions.CsvValidationException;
+//import com.opencsv.CSVReader;
+//import com.opencsv.CSVWriter;
+//import com.opencsv.exceptions.CsvException;
+//import com.opencsv.exceptions.CsvValidationException;
 
 import java.io.*;
 import java.util.Arrays;
@@ -42,27 +42,27 @@ public class Methods {
         System.out.println("Введите автора: \n");
         String author = myScan.nextLine();
 
-        AppendToCSV(taskName, deadline, priority, author);
+//        AppendToCSV(taskName, deadline, priority, author);
 
     }
-    public static void AppendToCSV (String taskName, String deadline, Priority priority, String author) throws IOException {
+//    public static void AppendToCSV (String taskName, String deadline, Priority priority, String author) throws IOException {
+//
+//        String csv = "TasksDB.csv";
+//        CSVWriter writer = new CSVWriter(new FileWriter(csv, true));
+//        String [] record = {taskName, deadline, priority.toString(), author};
+////        String [] record = "3,David,Feezor,USA,40".split(",");
+//        writer.writeNext(record);
+//        writer.close();
+//    }
 
-        String csv = "TasksDB.csv";
-        CSVWriter writer = new CSVWriter(new FileWriter(csv, true));
-        String [] record = {taskName, deadline, priority.toString(), author};
-//        String [] record = "3,David,Feezor,USA,40".split(",");
-        writer.writeNext(record);
-        writer.close();
-    }
-
-    public static void showAllTasks() throws IOException, CsvValidationException {
-
-        try (CSVReader reader = new CSVReader(new FileReader("TasksDB.csv"))) {
-            List<String[]> r = reader.readAll();
-            r.forEach(x -> System.out.println(Arrays.toString(x)));
-        } catch (CsvException e) {
-            throw new RuntimeException(e);
-        }
+//    public static void showAllTasks() throws IOException, CsvValidationException {
+//
+//        try (CSVReader reader = new CSVReader(new FileReader("TasksDB.csv"))) {
+//            List<String[]> r = reader.readAll();
+//            r.forEach(x -> System.out.println(Arrays.toString(x)));
+//        } catch (CsvException e) {
+//            throw new RuntimeException(e);
+//        }
 
 
 //        Object csvFile = "TasksDB.csv";
@@ -85,4 +85,4 @@ public class Methods {
     }
 
 
-}
+//}
