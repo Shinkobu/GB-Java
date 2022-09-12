@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.Scanner;
 
+import static Homework4.CsvExpImp.exportToCsv;
+import static Homework4.CsvExpImp.importFile;
+
 public class Controller {
 
 
@@ -25,7 +28,12 @@ public class Controller {
                 break;
             case 4:
                 deleteTaskByID();
-
+                break;
+            case 6:
+                exportToCsv();
+                break;
+            case 7:
+                importFile();
                 break;
         }
 

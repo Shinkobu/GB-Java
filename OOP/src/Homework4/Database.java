@@ -28,26 +28,6 @@ public class Database {
         return TASK_DATABASE;
     }
 
-    public static void exportToCsv() throws IOException {
-
-        String csv = "TasksDB.csv";
-        CSVWriter writer = new CSVWriter(new FileWriter(csv, true));
-
-//        String [] record = {taskName, deadline, priority.toString(), author};
-//        String [] record = "3,David,Feezor,USA,40".split(",");
-        writer.writeNext(record);
-        writer.close();
-
-        for (var element : TASK_DATABASE) {
-            System.out.println(element.toString());
-            String [] record = {element.getId().toString(),
-                    element.getCreatedDateTime().toString(),
-                    element.getDescription().toString(),
-                    element.getPriority().toString(),
-                    element.getDeadline(),
-                    element.getAuthor()};
-        }
-    }
 }
 
 

@@ -1,56 +1,58 @@
 package Homework4;
 
-import Homework4.example.Document;
 import com.opencsv.CSVWriter;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.time.LocalDateTime;
 
 public class CsvExpImp implements Exporter, Importer{
 
-    @Override
-    public void exportToCSV(String id, String date, String taskName, String priority,String deadline, String author) throws IOException {
-
-        String csv = "TasksDB.csv";
-        CSVWriter writer = new CSVWriter(new FileWriter(csv, true));
-        String [] record = {id, date, taskName, priority, deadline, author};
-//        String [] record = {taskName, deadline, priority.toString(), author};
-//        String [] record = "3,David,Feezor,USA,40".split(",");
-        writer.writeNext(record);
-        writer.close();
+    public static void importFile() {
+        String csvToImport = "TasksDB.csv";
+//        String csvToImport = "Import.csv";
+        BufferedReader reader = null;
+        String line = "";
+        try{
+            reader = new BufferedReader(new FileReader(csvToImport));
+            while ((line = reader.readLine()) != null){
+                String[] row = line.split(",");
+                for (String index : row){
+                    System.out.printf("%-15s", index);
+                }
+                System.out.println();
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            try {
+                reader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
-//    public static void showAllTasks() throws IOException, CsvValidationException {
-//
-//        try (CSVReader reader = new CSVReader(new FileReader("TasksDB.csv"))) {
-//            List<String[]> r = reader.readAll();
-//            r.forEach(x -> System.out.println(Arrays.toString(x)));
-//        } catch (CsvException e) {
-//            throw new RuntimeException(e);
-//        }
+    public static void exportToCsv() throws IOException {
 
-//
-//        Object csvFile = "TasksDB.csv";
-//        CSVReader csvReader = new CSVReader (new InputStreamReader(csvFile.getInputStream()));
-//        while ((record = csvReader.readNext()) != null) {
-//            // do something
-//        }
-//
-//        try (CSVReader reader = new CSVReader(new FileReader("TasksDB.csv"))) {
-//
-//            String[] nextLine;
-//            while ((nextLine = reader.readNext()) != null) {
-//                if (nextLine != null) {
-//                    //Verifying the read data here
-//                    System.out.println(Arrays.toString(nextLine));
-//                }
-//            }
-//        };
+        String csvDB = "TasksDB.csv";
+        CSVWriter writer = new CSVWriter(new FileWriter(csvDB, true));
 
+        for (var element : Database.getTaskDatabase() ) {
+            String [] record = {element.getId().toString(),
+                    element.getCreatedDateTime().toString(),
+                    element.getDescription().toString(),
+                    element.getPriority().toString(),
+                    element.getDeadline(),
+                    element.getAuthor()};
 
-    @Override
-    public Document importFile(String pathToFile) {
-        return null;
+            writer.writeNext(record);
+
+        }
+        System.out.println("\nЭкспорт успешно выполнен!\n");
+        writer.close();
     }
 }
