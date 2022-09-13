@@ -10,12 +10,36 @@ public class Task {
     private String Author;
     private String deadline;
 
+    public Task() {
+
+    }
+
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public void setDescription(Description description) {
+        this.description = description;
+    }
+
+    public void setPriority(Priority priority) {
+        this.priority = priority;
+    }
+
+    public void setAuthor(String author) {
+        Author = author;
+    }
+
+    public void setDeadline(String deadline) {
+        this.deadline = deadline;
+    }
+
+    public void setCreatedDateTime(LocalDateTime createdDateTime) {
+        this.createdDateTime = createdDateTime;
     }
 
     public Task(LocalDateTime createdDateTime,
@@ -40,8 +64,8 @@ public class Task {
                 ", срок исполнения: '" + deadline;
     }
 
-    public LocalDateTime getCreatedDateTime() {
-        return createdDateTime;
+    public String getCreatedDateTime() {
+        return createdDateTime.toString();
     }
 
     public Description getDescription() {

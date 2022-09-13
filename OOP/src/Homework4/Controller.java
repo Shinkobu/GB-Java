@@ -132,10 +132,13 @@ public class Controller {
         switch (tempPrior){
             case 1:
                 priority = Priority.IMMEDIATE;
+                break;
             case 2:
                 priority = Priority.AVERAGE;
+                break;
             case 3:
                 priority = Priority.LOW;
+                break;
         }
 
         System.out.println("Введите автора: \n");
