@@ -23,8 +23,6 @@ public class Controller {
                 break;
             case 3:
                 findTaskByID();
-
-
                 break;
             case 4:
                 deleteTaskByID();
@@ -52,7 +50,7 @@ public class Controller {
                 "2 - Вывести список задач\n" +
                 "3 - Найти задачу по ID\n" +
                 "4 - Удалить задачу по ID\n" +
-                "5 - Обновить задачу по ID\n" +
+//                "5 - Обновить задачу по ID\n" +
                 "6 - Экспорт в CSV\n" +
                 "7 - Импорт из CSV\n" +
                 "9 - Завершить работу \n");

@@ -50,8 +50,8 @@ public class TasksRepository implements Repository<Task,Long> {
         return foundTask;
     }
 
-    @Override
-    public Long updateById(Task document, Long aLong) {
-        return null;
-    }
+//    @Override
+//    public Long updateById(Task document, Long aLong) {
+//        return null;
+//    }
 }
