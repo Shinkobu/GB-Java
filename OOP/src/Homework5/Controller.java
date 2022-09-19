@@ -15,9 +15,10 @@ public class Controller {
 
     public static void run() throws IOException {
 
-        AbstractUser Alex = new User("Alex", "123",AccessRights.WRITE);
-        AbstractUser Nikolay = new User("Nikolay", "456", AccessRights.WRITE);
-        AbstractUser Fedor = new Moderator("Fedor", "qwerty%%^^",AccessRights.BAN);
+        AbstractUser Alex = new User("Alex", "123",AccessRights.READ_WRITE);
+        AbstractUser Nikolay = new User("Nikolay", "456", AccessRights.READ_WRITE);
+        AbstractUser Fedor = new Moderator("Fedor", "qwerty%%^^",AccessRights.READ_WRITE_BAN);
+
         AbstractUser CurrentUser = null;
 
         int choice1 = userMenu();
@@ -41,10 +42,10 @@ public class Controller {
                 writeMessage(CurrentUser);
                 break;
             case 2:
-                CurrentUser = Nikolay;
+                editMessage(CurrentUser);
                 break;
             case 3:
-                CurrentUser = Fedor;
+                // todo
                 break;
         }
 
@@ -72,7 +73,7 @@ public class Controller {
         Scanner myScan = new Scanner(System.in);
         System.out.println("Выберите действие:\n" +
                 "1 - Новое сообщение в беседе\n" +
-                "2 - Редактировать предыдущее сообщение\n" +
+                "2 - Редактировать последнее сообщение\n" +
                 "3 - Удалить сообщение (Moderator)\n" +
                 "4 - Забанить пользователя (Moderator)\n" +
                 "5 - Убрать пользователя из бан-листа (Moderator)\n");
@@ -88,14 +89,20 @@ public class Controller {
         System.out.println(CurrentUser.getName() + " : ");
         String currentText = myScan.nextLine();
         Message currentMessage = new Message(currentText, LocalDateTime.now(),CurrentUser);
-        System.out.println("\nСообщение имеет вид:\n");
-        System.out.println(currentMessage.toString());
+//        System.out.println("\nСообщение имеет вид:\n");
+//        System.out.println(currentMessage.toString());
 
-        Repository<Message> myRepo = new MessageRepository();
+        Repository<Message,AbstractUser> myRepo = new MessageRepository();
         myRepo.enterNewMessage(currentMessage);
 
         System.out.println("\nБеседа имеет вид:\n");
         Database.showDB();
+
+    }
+
+    public static void editMessage(AbstractUser user){
+        Repository<Message,AbstractUser> myRepo = new MessageRepository();
+        myRepo.editMessage(user);
 
     }
 }

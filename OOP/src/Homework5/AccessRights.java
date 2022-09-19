@@ -3,7 +3,7 @@ package Homework5;
 public enum AccessRights {
 
     READ,
-    WRITE,
-    BAN
+    READ_WRITE,
+    READ_WRITE_BAN
 
 }

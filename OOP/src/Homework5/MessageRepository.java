@@ -1,7 +1,14 @@
 package Homework5;
 
 
-public class MessageRepository implements Repository<Message> {
+import Homework5.users.AbstractUser;
+import Homework5.users.User;
+import com.sun.source.tree.IfTree;
+
+import java.time.LocalDateTime;
+import java.util.Scanner;
+
+public class MessageRepository implements Repository<Message, AbstractUser> {
 
     @Override
     public void enterNewMessage(Message message) {
@@ -14,7 +21,29 @@ public class MessageRepository implements Repository<Message> {
     }
 
     @Override
-    public void updateMessage(Message message) {
+    public void editMessage(AbstractUser user) {
+        Message messageToEdit = Database.getDatabase().get(Database.getDatabase().size()-1);
+        System.out.println(messageToEdit);
+
+        if (messageToEdit.author.getName().equals(user.getName()) ||
+            messageToEdit.author.getAccessRights().equals(AccessRights.READ_WRITE_BAN)){
+
+            System.out.println("Сообщение для редактирования: " + messageToEdit.toString());
+            System.out.println("Отредактируйте сообщение: \n");
+
+            Scanner myScan = new Scanner(System.in);
+            System.out.println(user.getName() + " : ");
+            String currentText = myScan.nextLine();
+            messageToEdit = new Message(currentText, LocalDateTime.now(),user);
+
+            Database.getDatabase().get(Database.getDatabase().size()-1);
+
+
+        }else {
+            System.out.println("Недостаточно прав для редактирования!");
+        }
+
+
 
     }
 }
