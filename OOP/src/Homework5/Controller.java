@@ -18,7 +18,8 @@ public class Controller {
 
         AbstractUser Alex = new User("Alex", "123",AccessRights.READ_WRITE);
         AbstractUser Nikolay = new User("Nikolay", "456", AccessRights.READ_WRITE);
-        AbstractUser Fedor = new Moderator("Fedor", "qwerty%%^^",AccessRights.READ_WRITE_BAN);
+        AbstractUser Fedor = new Moderator("Fedor", "qwerty%%^^",AccessRights.READ_WRITE_EDIT_BAN);
+        AbstractUser Peter = new Moderator("Peter", "qwerty%%^^dddd",AccessRights.READ_WRITE_EDIT_BAN_DELETE);
 
         AbstractUser CurrentUser = null;
 
@@ -34,6 +35,9 @@ public class Controller {
             case 3:
                 CurrentUser = Fedor;
                 break;
+            case 4:
+                CurrentUser = Peter;
+                break;
         }
 
         int choice2 = actionMenu();
@@ -46,7 +50,7 @@ public class Controller {
                 editMessage(CurrentUser);
                 break;
             case 3:
-                // todo
+                deleteMessage(CurrentUser);
                 break;
         }
 
@@ -62,7 +66,8 @@ public class Controller {
         System.out.println("Выберите пользователя:\n" +
                 "1 - Alex (User)\n" +
                 "2 - Nikolay (User)\n" +
-                "3 - Fedor (Moderator)\n");
+                "3 - Fedor (Moderator, can edit messages and ban users)\n" +
+                "4 - Peter (Admin, can edit messages, ban users, delete messages)\n");
 
         int choice = 0;
         choice = Integer.parseInt(myScan.nextLine());
@@ -74,10 +79,10 @@ public class Controller {
         Scanner myScan = new Scanner(System.in);
         System.out.println("Выберите действие:\n" +
                 "1 - Новое сообщение в беседе\n" +
-                "2 - Редактировать последнее сообщение\n" +
-                "3 - Удалить сообщение (Moderator)\n" +
-                "4 - Забанить пользователя (Moderator)\n" +
-                "5 - Убрать пользователя из бан-листа (Moderator)\n");
+                "2 - Редактировать последнее сообщение (Автор, Moderator and Admin)\n" +
+                "3 - Удалить сообщение (only Admin)\n" +
+                "4 - Забанить пользователя (Moderator and Admin)\n" +
+                "5 - Убрать пользователя из бан-листа (Moderator and Admin)\n");
 
         int choice = 0;
         choice = Integer.parseInt(myScan.nextLine());
@@ -103,6 +108,13 @@ public class Controller {
     public static void editMessage(AbstractUser user){
         Repository<Message,AbstractUser> myRepo = new MessageRepository();
         myRepo.editMessage(user);
+        showChat();
+
+    }
+
+    public static void deleteMessage(AbstractUser user){
+        Repository<Message,AbstractUser> myRepo = new MessageRepository();
+        myRepo.deleteMessage(user);
         showChat();
 
     }

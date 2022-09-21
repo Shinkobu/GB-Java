@@ -26,7 +26,8 @@ public class MessageRepository implements Repository<Message, AbstractUser> {
         String oldTime = messageToEdit.time;
 
         if (messageToEdit.author.getName().equals(user.getName()) ||
-            user.getAccessRights().equals(AccessRights.READ_WRITE_BAN)){
+            user.getAccessRights().equals(AccessRights.READ_WRITE_EDIT_BAN) ||
+            user.getAccessRights().equals(AccessRights.READ_WRITE_EDIT_BAN_DELETE)){
 
             System.out.println("Сообщение для редактирования: " + messageToEdit.toString());
             System.out.println("Отредактируйте сообщение: \n");
@@ -39,15 +40,55 @@ public class MessageRepository implements Repository<Message, AbstractUser> {
 
             Database.editLastMessage(messageToEdit);
 
-//            Database.getDatabase().get(Database.getDatabase().size()-1);
-
-
         }else {
             System.out.println("Недостаточно прав для редактирования!");
         }
+    }
+
+    public void deleteMessage(AbstractUser user) {
+
+        if (user.getAccessRights().equals(AccessRights.READ_WRITE_EDIT_BAN_DELETE)){
+
+            System.out.println("Выберите сообщение для удаления: \n");
+            Database.showDBWithIndex();
 
 
-
+//
+////            System.out.println("Сообщение для редактирования: " + messageToEdit.toString());
+//            System.out.println("Отредактируйте сообщение: \n");
+//
+//            Scanner myScan = new Scanner(System.in);
+//            System.out.println(user.getName() + " : ");
+//            String newText = myScan.nextLine();
+//
+////            messageToEdit = new Message(newText, oldTime, messageToEdit.author,Controller.formattedTime(),user);
+//
+////            Database.editLastMessage(messageToEdit);
+//
+//        }else {
+//            System.out.println("Недостаточно прав для редактирования!");
+//        }
+//        Message messageToEdit = Database.getDatabase().get(Database.getDatabase().size()-1);
+//        String oldTime = messageToEdit.time;
+//
+//        if (messageToEdit.author.getName().equals(user.getName()) ||
+//                user.getAccessRights().equals(AccessRights.READ_WRITE_EDIT_BAN) ||
+//                user.getAccessRights().equals(AccessRights.READ_WRITE_EDIT_BAN_DELETE)){
+//
+//            System.out.println("Сообщение для редактирования: " + messageToEdit.toString());
+//            System.out.println("Отредактируйте сообщение: \n");
+//
+//            Scanner myScan = new Scanner(System.in);
+//            System.out.println(user.getName() + " : ");
+//            String newText = myScan.nextLine();
+//
+//            messageToEdit = new Message(newText, oldTime, messageToEdit.author,Controller.formattedTime(),user);
+//
+//            Database.editLastMessage(messageToEdit);
+//
+//        }else {
+//            System.out.println("Недостаточно прав для редактирования!");
+        }
     }
 }
 

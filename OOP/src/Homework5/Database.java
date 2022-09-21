@@ -9,6 +9,7 @@ import java.util.List;
 public class Database {
 
     private static final List<Message> MESSAGES_DB = new ArrayList<>();
+
     private static final List<User> USERS_DB = new ArrayList<>();
 
     public static void putData(Message message) { MESSAGES_DB.add(message); }
@@ -23,5 +24,12 @@ public class Database {
 
     }
     public static List<Message> getDatabase () { return MESSAGES_DB; }
+
+    public static void showDBWithIndex(){
+
+        for (var element : MESSAGES_DB) {
+            System.out.println("Индекс: " + MESSAGES_DB.indexOf(element) +" //// "+ element.toString());}
+
+    }
 
 }
