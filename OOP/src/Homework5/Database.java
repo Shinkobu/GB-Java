@@ -12,8 +12,8 @@ public class Database {
     private static final List<User> USERS_DB = new ArrayList<>();
 
     public static void putData(Message message) { MESSAGES_DB.add(message); }
-    public static void editLastMessage(){
-
+    public static void editLastMessage(Message updatedMessage){
+        MESSAGES_DB.set(MESSAGES_DB.size()-1, updatedMessage);
     }
     public static void putDataToUsersDB(User user) { USERS_DB.add(user); }
 

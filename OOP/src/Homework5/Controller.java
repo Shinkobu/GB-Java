@@ -6,6 +6,7 @@ import Homework5.users.User;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 import static Homework4.CsvExpImp.exportToCsv;
@@ -88,21 +89,35 @@ public class Controller {
         Scanner myScan = new Scanner(System.in);
         System.out.println(CurrentUser.getName() + " : ");
         String currentText = myScan.nextLine();
-        Message currentMessage = new Message(currentText, LocalDateTime.now(),CurrentUser);
+        Message currentMessage = new Message(currentText, formattedTime(),CurrentUser);
 //        System.out.println("\nСообщение имеет вид:\n");
 //        System.out.println(currentMessage.toString());
 
         Repository<Message,AbstractUser> myRepo = new MessageRepository();
         myRepo.enterNewMessage(currentMessage);
 
-        System.out.println("\nБеседа имеет вид:\n");
-        Database.showDB();
+        showChat();
 
     }
 
     public static void editMessage(AbstractUser user){
         Repository<Message,AbstractUser> myRepo = new MessageRepository();
         myRepo.editMessage(user);
+        showChat();
 
+    }
+
+    public static String formattedTime() {
+
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formatDateTime = now.format(formatter);
+        return formatDateTime;
+
+    }
+
+    public static void showChat(){
+        System.out.println("\nБеседа имеет вид:\n");
+        Database.showDB();
     }
 }

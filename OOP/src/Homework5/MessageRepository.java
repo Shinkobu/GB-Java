@@ -23,24 +23,27 @@ public class MessageRepository implements Repository<Message, AbstractUser> {
     @Override
     public void editMessage(AbstractUser user) {
         Message messageToEdit = Database.getDatabase().get(Database.getDatabase().size()-1);
-        System.out.println(messageToEdit);
+        String oldTime = messageToEdit.time;
 
         if (messageToEdit.author.getName().equals(user.getName()) ||
-            messageToEdit.author.getAccessRights().equals(AccessRights.READ_WRITE_BAN)){
+            user.getAccessRights().equals(AccessRights.READ_WRITE_BAN)){
 
-            System.out.println("Сообщение для редактирования: " + messageToEdit.toString());
-            System.out.println("Отредактируйте сообщение: \n");
+            System.out.println("РЎРѕРѕР±С‰РµРЅРёРµ РґР»СЏ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ: " + messageToEdit.toString());
+            System.out.println("РћС‚СЂРµРґР°РєС‚РёСЂСѓР№С‚Рµ СЃРѕРѕР±С‰РµРЅРёРµ: \n");
 
             Scanner myScan = new Scanner(System.in);
             System.out.println(user.getName() + " : ");
-            String currentText = myScan.nextLine();
-            messageToEdit = new Message(currentText, LocalDateTime.now(),user);
+            String newText = myScan.nextLine();
 
-            Database.getDatabase().get(Database.getDatabase().size()-1);
+            messageToEdit = new Message(newText, oldTime, messageToEdit.author,Controller.formattedTime(),user);
+
+            Database.editLastMessage(messageToEdit);
+
+//            Database.getDatabase().get(Database.getDatabase().size()-1);
 
 
         }else {
-            System.out.println("Недостаточно прав для редактирования!");
+            System.out.println("РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ РїСЂР°РІ РґР»СЏ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ!");
         }
 
 

@@ -6,20 +6,32 @@ import java.time.LocalDateTime;
 
 public class Message {
     String text;
-    LocalDateTime time;
+    String time;
     AbstractUser author;
+    AbstractUser editor;
+    String updatedAtTime;
+    String updatedAtTimeString;
 
-    public Message(String text, LocalDateTime time, AbstractUser author) {
+
+    public Message(String text, String time, AbstractUser author) {
         this.text = text;
         this.time = time;
         this.author = author;
+    }
+
+    public Message(String text, String time, AbstractUser author, String updatedAtTime, AbstractUser editor) {
+        this.text = text;
+        this.time = time;
+        this.author = author;
+        this.updatedAtTime = updatedAtTime;
+        this.editor = editor;
     }
 
     public void setText(String text) {
         this.text = text;
     }
 
-    public void setTime(LocalDateTime time) {
+    public void setTime(String time) {
         this.time = time;
     }
 
@@ -31,13 +43,17 @@ public class Message {
         return text;
     }
 
-    public LocalDateTime getTime() {
+    public String getTime() {
         return time;
     }
 
     @Override
     public String toString() {
-        return author.getName() + " в " + time +  ": " + text;
+        updatedAtTimeString = "";
+        if (updatedAtTime != null) {
+            updatedAtTimeString = " (отред. " + editor.getName() + " в " + updatedAtTime + ")";
+        }
+        return author.getName() + " в " + time +  ": " + text + updatedAtTimeString;
     }
 
     public AbstractUser getAuthor() {
