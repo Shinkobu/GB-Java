@@ -2,17 +2,16 @@ package Homework5;
 
 
 import Homework5.users.AbstractUser;
-import Homework5.users.User;
-import com.sun.source.tree.IfTree;
 
-import java.time.LocalDateTime;
 import java.util.Scanner;
+
+import static Homework5.Controller.formattedTime;
 
 public class MessageRepository implements Repository<Message, AbstractUser> {
 
     @Override
     public void enterNewMessage(Message message) {
-        Database.putData(message);
+        Database.putDataToMessagesDB(message);
     }
 
     @Override
@@ -36,7 +35,7 @@ public class MessageRepository implements Repository<Message, AbstractUser> {
             System.out.println(user.getName() + " : ");
             String newText = myScan.nextLine();
 
-            messageToEdit = new Message(newText, oldTime, messageToEdit.author,Controller.formattedTime(),user);
+            messageToEdit = new Message(newText, oldTime, messageToEdit.author, formattedTime(),user,false);
 
             Database.editLastMessage(messageToEdit);
 
@@ -49,17 +48,35 @@ public class MessageRepository implements Repository<Message, AbstractUser> {
 
         if (user.getAccessRights().equals(AccessRights.READ_WRITE_EDIT_BAN_DELETE)){
 
-            System.out.println("Выберите сообщение для удаления: \n");
+            System.out.println("Выберите сообщение для удаления по номеру индекса: \n");
             Database.showDBWithIndex();
 
+            Scanner myScan = new Scanner(System.in);
+            int index = 0;
+            index = Integer.parseInt(myScan.nextLine());
+
+            System.out.println("Будет удалено сообщение, Y?: \n");
+            System.out.println(Database.getDatabase().get(index).toString());
+            Message tempMessage = Database.getDatabase().get(index);
+
+            String choice2 = myScan.nextLine();
+            if (choice2.equals("Y") ||
+                choice2.equals("Yes") ||
+                choice2.equals("y") ||
+                choice2.equals("yes")){
+
+                Database.editMessage(new Message(tempMessage.text,tempMessage.time, tempMessage.author,formattedTime(), user, true),index);
+                System.out.println("Сообщение удалено");
+
+            }else {
+                System.out.println("Операция не подтверждена");
+            }
 
 //
 ////            System.out.println("Сообщение для редактирования: " + messageToEdit.toString());
 //            System.out.println("Отредактируйте сообщение: \n");
 //
-//            Scanner myScan = new Scanner(System.in);
-//            System.out.println(user.getName() + " : ");
-//            String newText = myScan.nextLine();
+
 //
 ////            messageToEdit = new Message(newText, oldTime, messageToEdit.author,Controller.formattedTime(),user);
 //

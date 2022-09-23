@@ -11,6 +11,8 @@ public class Message {
     AbstractUser editor;
     String updatedAtTime;
     String updatedAtTimeString;
+    Boolean isDeleted;
+
 
 
     public Message(String text, String time, AbstractUser author) {
@@ -19,12 +21,13 @@ public class Message {
         this.author = author;
     }
 
-    public Message(String text, String time, AbstractUser author, String updatedAtTime, AbstractUser editor) {
+    public Message(String text, String time, AbstractUser author, String updatedAtTime, AbstractUser editor, Boolean isDeleted) {
         this.text = text;
         this.time = time;
         this.author = author;
         this.updatedAtTime = updatedAtTime;
         this.editor = editor;
+        this.isDeleted = isDeleted;
     }
 
     public void setText(String text) {
@@ -49,11 +52,16 @@ public class Message {
 
     @Override
     public String toString() {
-        updatedAtTimeString = "";
+        updatedAtTimeString = text;
         if (updatedAtTime != null) {
-            updatedAtTimeString = " (отред. " + editor.getName() + " в " + updatedAtTime + ")";
+            updatedAtTimeString = text + " (отред. " + editor.getName() + " в " + updatedAtTime + ")";
         }
-        return author.getName() + " в " + time +  ": " + text + updatedAtTimeString;
+
+        if (isDeleted != null && isDeleted) {
+            updatedAtTimeString = " (сообщение удалено " + editor.getName() + " в " + updatedAtTime + ")";
+        }
+
+        return author.getName() + " в " + time +  ": " + updatedAtTimeString;
     }
 
     public AbstractUser getAuthor() {

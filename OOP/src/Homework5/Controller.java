@@ -16,27 +16,22 @@ public class Controller {
 
     public static void run() throws IOException {
 
-        AbstractUser Alex = new User("Alex", "123",AccessRights.READ_WRITE);
-        AbstractUser Nikolay = new User("Nikolay", "456", AccessRights.READ_WRITE);
-        AbstractUser Fedor = new Moderator("Fedor", "qwerty%%^^",AccessRights.READ_WRITE_EDIT_BAN);
-        AbstractUser Peter = new Moderator("Peter", "qwerty%%^^dddd",AccessRights.READ_WRITE_EDIT_BAN_DELETE);
-
         AbstractUser CurrentUser = null;
 
         int choice1 = userMenu();
 
         switch (choice1) {
             case 1:
-                CurrentUser = Alex;
+                CurrentUser = Database.getUsersDatabase().get(0);
                 break;
             case 2:
-                CurrentUser = Nikolay;
+                CurrentUser = Database.getUsersDatabase().get(1);
                 break;
             case 3:
-                CurrentUser = Fedor;
+                CurrentUser = Database.getUsersDatabase().get(2);
                 break;
             case 4:
-                CurrentUser = Peter;
+                CurrentUser = Database.getUsersDatabase().get(3);
                 break;
         }
 
