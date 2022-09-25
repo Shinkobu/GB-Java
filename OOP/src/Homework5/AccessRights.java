@@ -4,8 +4,8 @@ public enum AccessRights {
 
     READ,
     READ_WRITE,
-    READ_WRITE_EDIT_BAN,
-    READ_WRITE_EDIT_BAN_DELETE
+    READ_WRITE_EDIT,
+    READ_WRITE_EDIT_DELETE
 
 
 }

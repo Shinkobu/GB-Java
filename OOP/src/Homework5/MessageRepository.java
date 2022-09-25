@@ -25,8 +25,8 @@ public class MessageRepository implements Repository<Message, AbstractUser> {
         String oldTime = messageToEdit.time;
 
         if (messageToEdit.author.getName().equals(user.getName()) ||
-            user.getAccessRights().equals(AccessRights.READ_WRITE_EDIT_BAN) ||
-            user.getAccessRights().equals(AccessRights.READ_WRITE_EDIT_BAN_DELETE)){
+            user.getAccessRights().equals(AccessRights.READ_WRITE_EDIT) ||
+            user.getAccessRights().equals(AccessRights.READ_WRITE_EDIT_DELETE)){
 
             System.out.println("Сообщение для редактирования: " + messageToEdit.toString());
             System.out.println("Отредактируйте сообщение: \n");
@@ -46,7 +46,7 @@ public class MessageRepository implements Repository<Message, AbstractUser> {
 
     public void deleteMessage(AbstractUser user) {
 
-        if (user.getAccessRights().equals(AccessRights.READ_WRITE_EDIT_BAN_DELETE)){
+        if (user.getAccessRights().equals(AccessRights.READ_WRITE_EDIT_DELETE)){
 
             System.out.println("Выберите сообщение для удаления по номеру индекса: \n");
             Database.showDBWithIndex();

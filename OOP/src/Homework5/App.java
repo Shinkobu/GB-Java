@@ -15,8 +15,8 @@ public class App {
 
         AbstractUser Alex = new User("Alex", "123",AccessRights.READ_WRITE);
         AbstractUser Nikolay = new User("Nikolay", "456", AccessRights.READ_WRITE);
-        AbstractUser Fedor = new Moderator("Fedor", "qwerty%%^^",AccessRights.READ_WRITE_EDIT_BAN);
-        AbstractUser Peter = new Admin("Peter", "qwerty%%^^dddd",AccessRights.READ_WRITE_EDIT_BAN_DELETE);
+        AbstractUser Fedor = new Moderator("Fedor", "qwerty%%^^",AccessRights.READ_WRITE_EDIT);
+        AbstractUser Peter = new Admin("Peter", "qwerty%%^^dddd",AccessRights.READ_WRITE_EDIT_DELETE);
 
         Database.putDataToUsersDB(Alex);
         Database.putDataToUsersDB(Nikolay);

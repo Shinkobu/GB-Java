@@ -61,8 +61,8 @@ public class Controller {
         System.out.println("Выберите пользователя:\n" +
                 "1 - Alex (User)\n" +
                 "2 - Nikolay (User)\n" +
-                "3 - Fedor (Moderator, can edit messages and ban users)\n" +
-                "4 - Peter (Admin, can edit messages, ban users, delete messages)\n");
+                "3 - Fedor (Moderator, can edit messages)\n" +
+                "4 - Peter (Admin, can edit messages, delete messages)\n");
 
         int choice = 0;
         choice = Integer.parseInt(myScan.nextLine());
@@ -75,9 +75,9 @@ public class Controller {
         System.out.println("Выберите действие:\n" +
                 "1 - Новое сообщение в беседе\n" +
                 "2 - Редактировать последнее сообщение (Автор, Moderator and Admin)\n" +
-                "3 - Удалить сообщение (only Admin)\n" +
-                "4 - Забанить пользователя (Moderator and Admin)\n" +
-                "5 - Убрать пользователя из бан-листа (Moderator and Admin)\n");
+                "3 - Удалить сообщение (only Admin)\n");
+//                "4 - Забанить пользователя (Moderator and Admin)\n" +
+//                "5 - Убрать пользователя из бан-листа (Moderator and Admin)\n");
 
         int choice = 0;
         choice = Integer.parseInt(myScan.nextLine());
