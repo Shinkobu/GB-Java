@@ -9,6 +9,7 @@ public abstract class Human implements Iterable {
     public Integer birthYear;
     public Integer deathYear;
     public List<String> titles = new ArrayList<>();
+    public List<String> titles1 = new ArrayList<>();
 
     public Human(String name, Integer birthYear, Integer deathYear) {
 
@@ -19,6 +20,7 @@ public abstract class Human implements Iterable {
 
     public void addTitle(String title){
         titles.add(title);
+        titles1.add(title);
     }
 
     public Integer getBirthYear() {
