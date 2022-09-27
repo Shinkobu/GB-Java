@@ -4,7 +4,7 @@ package Homework5;
 
 public interface Repository<T,K> {
     void enterNewMessage(T t);
-    T findMessage(String string);
+    void findMessage();
     void editMessage(K k);
     void deleteMessage(K k);
 }

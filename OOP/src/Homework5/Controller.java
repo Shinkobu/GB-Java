@@ -47,6 +47,9 @@ public class Controller {
             case 3:
                 deleteMessage(CurrentUser);
                 break;
+            case 4:
+                findMessage();
+                break;
         }
 
         run();
@@ -75,7 +78,8 @@ public class Controller {
         System.out.println("Выберите действие:\n" +
                 "1 - Новое сообщение в беседе\n" +
                 "2 - Редактировать последнее сообщение (Автор, Moderator and Admin)\n" +
-                "3 - Удалить сообщение (only Admin)\n");
+                "3 - Удалить сообщение (only Admin)\n" +
+                "4 - Поиск по сообщениям\n");
 //                "4 - Забанить пользователя (Moderator and Admin)\n" +
 //                "5 - Убрать пользователя из бан-листа (Moderator and Admin)\n");
 
@@ -126,5 +130,11 @@ public class Controller {
     public static void showChat(){
         System.out.println("\nБеседа имеет вид:\n");
         Database.showDB();
+    }
+
+    public static void findMessage() {
+        Repository<Message,AbstractUser> myRepo = new MessageRepository();
+        myRepo.findMessage();
+
     }
 }

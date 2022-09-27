@@ -15,8 +15,27 @@ public class MessageRepository implements Repository<Message, AbstractUser> {
     }
 
     @Override
-    public Message findMessage(String string) {
-        return null;
+    public void findMessage() {
+
+        System.out.println("Введите выражение для поиска: \n");
+
+        Scanner myScan = new Scanner(System.in);
+        String newText = myScan.nextLine();
+        int isFound = 0;
+
+        for (Message m : Database.getDatabase()) {
+            if (m.text.contains(newText)){
+                isFound++;
+                if (isFound==1) {
+                    System.out.println("Результаты поиска");
+                }
+                System.out.println(m.toString());
+            }
+
+        }
+        if (isFound==0){
+            System.out.println("Выражение не найдено");
+        }
     }
 
     @Override
