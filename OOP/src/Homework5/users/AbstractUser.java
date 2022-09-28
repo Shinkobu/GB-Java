@@ -1,3 +1,4 @@
+
 package Homework5.users;
 
 import Homework5.AccessRights;
@@ -29,5 +30,3 @@ public abstract class AbstractUser {
         return AccessRights;
     }
 }
-
-
