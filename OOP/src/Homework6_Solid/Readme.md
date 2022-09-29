@@ -12,10 +12,16 @@
 - проявить фантазию и добавить свой функционал)
 
 
+
+
+
 SOLID
 
 1) Single Responsibility Principle (Принцип единственной ответственности).
-2) Open Closed Principle (Принцип открытости/закрытости).
-3) Liskov’s Substitution Principle (Принцип подстановки Барбары Лисков).
-4) Interface Segregation Principle (Принцип разделения интерфейса).
-5) Dependency Inversion Principle (Принцип инверсии зависимостей).
+- Один класс - одна функция. Функция целиком в одном классе.
+- Класс Controller c 9 функциями разбил на разные классы (пакет Controller)
+3) Open Closed Principle (Принцип открытости/закрытости).
+- Если нужно нарастить функционал класса, то не нужно его менять, нужно его расширить и переопределить функции
+4) Liskov’s Substitution Principle (Принцип подстановки Барбары Лисков).
+5) Interface Segregation Principle (Принцип разделения интерфейса).
+6) Dependency Inversion Principle (Принцип инверсии зависимостей).

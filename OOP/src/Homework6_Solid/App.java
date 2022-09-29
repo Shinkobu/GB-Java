@@ -1,11 +1,15 @@
 package Homework6_Solid;
 
-import Homework6_Solid.users.AbstractUser;
-import Homework6_Solid.users.Admin;
-import Homework6_Solid.users.Moderator;
-import Homework6_Solid.users.User;
+import Homework6_Solid.Controller.Controller;
+import Homework6_Solid.Users.AbstractUser;
+import Homework6_Solid.Users.Admin;
+import Homework6_Solid.Users.Moderator;
+import Homework6_Solid.Users.User;
 import java.io.IOException;
-import static Homework6_Solid.Controller.showChat;
+
+import static Homework6_Solid.Controller.ShowChat.showChat;
+import static Homework6_Solid.Controller.FormattedTime.formattedTime;
+
 
 public class App {
     public static void main(String[] args) throws IOException {
@@ -21,11 +25,11 @@ public class App {
         Database.putDataToUsersDB(Fedor);
         Database.putDataToUsersDB(Peter);
 
-        Database.putDataToMessagesDB(new Message("Привет!", Controller.formattedTime(),Alex));
-        Database.putDataToMessagesDB(new Message("Здорово! Как дела?", Controller.formattedTime(),Nikolay));
-        Database.putDataToMessagesDB(new Message("Ауэнно!", Controller.formattedTime(),Alex));
-        Database.putDataToMessagesDB(new Message("Парни, не ругаемся!", Controller.formattedTime(),Fedor));
-        Database.putDataToMessagesDB(new Message("Сорян!", Controller.formattedTime(),Alex));
+        Database.putDataToMessagesDB(new Message("Привет!", formattedTime(),Alex));
+        Database.putDataToMessagesDB(new Message("Здорово! Как дела?", formattedTime(),Nikolay));
+        Database.putDataToMessagesDB(new Message("Ауэнно!", formattedTime(),Alex));
+        Database.putDataToMessagesDB(new Message("Парни, не ругаемся!", formattedTime(),Fedor));
+        Database.putDataToMessagesDB(new Message("Сорян!", formattedTime(),Alex));
 
 
         showChat();

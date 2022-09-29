@@ -1,5 +1,5 @@
 
-package Homework6_Solid.users;
+package Homework6_Solid.Users;
 
 public abstract class AbstractUser {
     String name;

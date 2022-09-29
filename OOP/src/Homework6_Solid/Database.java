@@ -1,6 +1,6 @@
 package Homework6_Solid;
 
-import Homework6_Solid.users.AbstractUser;
+import Homework6_Solid.Users.AbstractUser;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,6 @@
 package Homework6_Solid;
 
-import Homework6_Solid.users.AbstractUser;
+import Homework6_Solid.Users.AbstractUser;
 
 public class Message {
     String text;
