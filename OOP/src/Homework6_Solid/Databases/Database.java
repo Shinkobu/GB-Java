@@ -1,5 +1,6 @@
-package Homework6_Solid;
+package Homework6_Solid.Databases;
 
+import Homework6_Solid.Message;
 import Homework6_Solid.Users.AbstractUser;
 
 import java.util.ArrayList;

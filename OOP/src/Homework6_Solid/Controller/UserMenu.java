@@ -5,10 +5,10 @@ import java.util.Scanner;
 public class UserMenu {
     public static int userMenu(){
 
-        System.out.println("\nВыберите пользователя\n");
+        System.out.println("\nР’С‹Р±РµСЂРёС‚Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ\n");
 
         Scanner myScan = new Scanner(System.in);
-        System.out.println("Выберите пользователя:\n" +
+        System.out.println("Р’С‹Р±РµСЂРёС‚Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ:\n" +
                 "1 - Alex (User)\n" +
                 "2 - Nikolay (User)\n" +
                 "3 - Fedor (Moderator, can edit messages)\n" +

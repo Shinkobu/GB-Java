@@ -1,11 +1,14 @@
 package Homework6_Solid.Controller;
 
-import Homework6_Solid.Database;
+import Homework6_Solid.Databases.Database;
+import Homework6_Solid.Message;
+import Homework6_Solid.MessageRepository;
+import Homework6_Solid.Repository;
 import Homework6_Solid.Users.AbstractUser;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+
+import static Homework6_Solid.Controller.ShowChat.showChat;
 
 public class Controller {
 
@@ -31,19 +34,22 @@ public class Controller {
         }
 
         int choice2 = ActionMenu.actionMenu();
+        Repository<Message, AbstractUser> myRepo = new MessageRepository();
 
         switch (choice2) {
             case 1:
                 NewMessage.writeMessage(CurrentUser);
                 break;
             case 2:
-                EDFMessage.editMessage(CurrentUser);
+                myRepo.editMessage(CurrentUser);
+                showChat();
                 break;
             case 3:
-                EDFMessage.deleteMessage(CurrentUser);
+                myRepo.deleteMessage(CurrentUser);
+                showChat();
                 break;
             case 4:
-                EDFMessage.findMessage();
+                myRepo.findMessage();
                 break;
         }
 

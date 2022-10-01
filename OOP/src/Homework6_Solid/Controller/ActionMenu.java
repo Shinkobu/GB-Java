@@ -6,13 +6,13 @@ public class ActionMenu {
     public static int actionMenu(){
 
         Scanner myScan = new Scanner(System.in);
-        System.out.println("Выберите действие:\n" +
-                "1 - Новое сообщение в беседе\n" +
-                "2 - Редактировать последнее сообщение (Автор, Moderator and Admin)\n" +
-                "3 - Удалить сообщение (only Admin)\n" +
-                "4 - Поиск по сообщениям\n");
-//                "4 - Забанить пользователя (Moderator and Admin)\n" +
-//                "5 - Убрать пользователя из бан-листа (Moderator and Admin)\n");
+        System.out.println("Р’С‹Р±РµСЂРёС‚Рµ РґРµР№СЃС‚РІРёРµ:\n" +
+                "1 - РќРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ РІ Р±РµСЃРµРґРµ\n" +
+                "2 - Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РїРѕСЃР»РµРґРЅРµРµ СЃРѕРѕР±С‰РµРЅРёРµ (РђРІС‚РѕСЂ, Moderator and Admin)\n" +
+                "3 - РЈРґР°Р»РёС‚СЊ СЃРѕРѕР±С‰РµРЅРёРµ (only Admin)\n" +
+                "4 - РџРѕРёСЃРє РїРѕ СЃРѕРѕР±С‰РµРЅРёСЏРј\n");
+//                "4 - Р—Р°Р±Р°РЅРёС‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ (Moderator and Admin)\n" +
+//                "5 - РЈР±СЂР°С‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РёР· Р±Р°РЅ-Р»РёСЃС‚Р° (Moderator and Admin)\n");
 
         int choice = 0;
         choice = Integer.parseInt(myScan.nextLine());

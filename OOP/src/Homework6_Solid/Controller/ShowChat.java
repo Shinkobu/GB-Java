@@ -1,6 +1,6 @@
 package Homework6_Solid.Controller;
 
-import Homework6_Solid.Database;
+import Homework6_Solid.Databases.Database;
 
 public class ShowChat {
 

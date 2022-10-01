@@ -1,6 +1,7 @@
 package Homework6_Solid;
 
 import Homework6_Solid.Controller.Controller;
+import Homework6_Solid.Databases.Database;
 import Homework6_Solid.Users.AbstractUser;
 import Homework6_Solid.Users.Admin;
 import Homework6_Solid.Users.Moderator;
