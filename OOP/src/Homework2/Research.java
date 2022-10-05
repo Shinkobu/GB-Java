@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Research implements ResearchMethods {
 
-    public static void printAllRelatives(String name, FamilyHistory tree, Relation someRelation) {
+    public void printAllRelatives(String name, FamilyHistory tree, Relation someRelation) {
         List<Link> links = tree.getLinks();
 
         boolean isFound = false;

@@ -67,19 +67,20 @@ public class App {
             System.out.println("Введите имя:\n");
             name = myScan.nextLine();
         }
-
+            ResearchMethods myRes = new Research();
             switch (choice) {
+
                 case 1:
-                    Research.printAllRelatives(name, tree, Relation.PARENT);
+                    myRes.printAllRelatives(name, tree, Relation.PARENT);
                     break;
                 case 2:
-                    Research.printAllRelatives(name, tree, Relation.SIBLING);
+                    myRes.printAllRelatives(name, tree, Relation.SIBLING);
                     break;
                 case 3:
-                    Research.printAllRelatives(name, tree, Relation.CHILD);
+                    myRes.printAllRelatives(name, tree, Relation.CHILD);
                     break;
                 case 4:
-                    Research.printAllRelatives(name, tree, Relation.GRANDCHILD);
+                    myRes.printAllRelatives(name, tree, Relation.GRANDCHILD);
                     break;
                 case 5:
 
